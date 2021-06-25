@@ -2,7 +2,6 @@ import os
 from web3 import Web3
 from dotenv import load_dotenv
 import json
-import datetime
 import asyncio
 import khron_node.data.database as mongo_setup
 import khron_node.khron_services.data_service as svc
