@@ -13,14 +13,18 @@ def are_we_connected():
 
 def handle_event(event):
     request = dict(event.args)
-    request_JSON = json.loads(request['_data'].decode("utf-8"))
-    print(request['_sender'],request_JSON)
+    #decode_hex = request['data'][2:].decode("ASCII")
+    #request_JSON = json.loads(request['data'].decode("utf-8"))
+    #print(request['_sender'],request_JSON)
+    print(len(request['data']))
+    print(request['data'][0:32].hex(), request['data'][32:64].hex(), request['data'][64:96].hex())
+    print(int.from_bytes(request['data'][0:32],"little"), request['data'][32:64].hex(), int(request['data'][64:96].hex(),16))
 
 async def log_loop(event_filter):
     while True:
         for event in event_filter.get_new_entries():
             handle_event(event)
-        await asyncio.sleep(20)
+        await asyncio.sleep(5)
 
 def listen(contract_address, abi_path):
     with open(abi_path) as f:
