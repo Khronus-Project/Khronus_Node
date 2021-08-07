@@ -3,6 +3,7 @@ from web3 import Web3
 from dotenv import load_dotenv
 import json
 import asyncio
+from khron_node.khron_services.byte_services import decode
 
 load_dotenv()
 node_provider = os.environ['NODE_PROVIDER']
@@ -13,12 +14,7 @@ def are_we_connected():
 
 def handle_event(event):
     request = dict(event.args)
-    #decode_hex = request['data'][2:].decode("ASCII")
-    #request_JSON = json.loads(request['data'].decode("utf-8"))
-    #print(request['_sender'],request_JSON)
-    print(len(request['data']))
-    print(request['data'][0:32].hex(), request['data'][32:64].hex(), request['data'][64:96].hex())
-    print(int.from_bytes(request['data'][0:32],"little"), request['data'][32:64].hex(), int(request['data'][64:96].hex(),16))
+    print(decode(request['data']))
 
 async def log_loop(event_filter):
     while True:
