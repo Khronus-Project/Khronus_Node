@@ -1,1 +1,1 @@
-{"InputLenght":96,"Fields":[{"Name":"flag","Type":1,"Location":[0,32]},{"Name":"alertID","Type":1,"Location":[32,64]},{"Name":"timestamp","Type":1,"Location":[64,96]}]}
+{"InputLenght":96,"Fields":[{"Name":"flag","Type":1,"Location":[0,32]},{"Name":"alertID","Type":1,"Location":[32,64]},{"Name":"timestamp","Type":2,"Location":[64,96]}]}
