@@ -1,0 +1,5 @@
+{
+    "Event_Types":[["1","Create"],["2","Read"],["3","Update"],["4","Delete"]],
+    "Task_Types":[["00","Test_Task"],["01","Khron_Request"], ["02","Alert"]],
+    "Status":[["01","Received"],["02","Processed"],["03","Fulfilled"]]
+}

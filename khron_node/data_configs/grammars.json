@@ -1,0 +1,2 @@
+{"Action_Types":["102"],
+    "102":{"InputLenght":163,"Fields":[{"Name":"requestID","Type":0,"Location":[0,32]},{"Name":"alertID","Type":0,"Location":[32,64]},{"Name":"timestamp","Type":2,"Location":[64,96]},{"Name":"alert_correlative","Type":1,"Location":[96,128]},{"Name":"total_alerts","Type":1,"Location":[128,160]}]}}

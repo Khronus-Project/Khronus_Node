@@ -10,3 +10,5 @@ sandbox
 celerybeat-schedule
 *.env
 /logfiles
+database
+.DS_Store
