@@ -1,12 +1,46 @@
-from khron_node.data.models import Alert
+from khron_node.data.models import Base, Event, Event_Type, Task_Type, Khron_Request, Alert, Status
+from khron_node.data.database import engine
+from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+from os import environ
+import json
 
-def create_alert(request_ID: str, body:str) -> Alert:
-    alert = Alert()
-    alert.request_ID = request_ID
-    alert.body = body
-    alert.save()
-    return alert
+load_dotenv()
+Session = sessionmaker(bind=engine)
+session = Session()
 
-def find_alert_by_ID(request_ID: str) -> Alert:
-    alert = Alert.objects(request_ID=request_ID).first()
-    return alert
+def initialize_db():
+    with open(environ["INITIAL_DATA"]) as f:
+        initial_data = json.load(f)
+    Base.metadata.create_all(engine)
+    print('created_db')
+    for _event_type in initial_data["Event_Types"]:
+        curr_event_type = Event_Type(id=_event_type[0],event_type=_event_type[1])
+        session.add(curr_event_type)
+    print("loaded event types")
+    for _task_type in initial_data["Task_Types"]:
+        curr_task_type = Task_Type(id=_task_type[0],task_type=_task_type[1])
+        session.add(curr_task_type)
+    print("loaded task types")
+    for _status in initial_data["Status"]:
+        curr_status = Status(id=_status[0],status=_status[1])
+        session.add(curr_status)
+    print("loaded status")
+    session.commit()
+    print("DB Saved")
+    return "Initial Tables Created"
+
+def add_alert(_alert):
+    added_alert = Alert(id=_alert['id'],parent=_alert['parent'],correlative=_alert['correlative'],timestamp=_alert['timestamp'],status_id=1)
+    session.add(added_alert)
+    session.commit()
+    print(f"added alert with {_alert}")
+    return True
+
+
+def add_event(_event):
+    added_event = Event(type_id=_event["type_id"],time=_event["time"],task_type_id=_event["task_type_id"], khron_request_id=_event["khron_request_id"], alert_id=_event["alert_id"])
+    session.add(added_event)
+    session.commit()
+    print(f"event added with {_event}")
+    return True

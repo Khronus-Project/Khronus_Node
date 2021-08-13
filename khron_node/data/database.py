@@ -1,5 +1,5 @@
-import mongoengine
+from sqlalchemy import create_engine
 
-def global_init():
-    mongoengine.register_connection(alias='core',name='khrone_data')
+
+engine = create_engine('sqlite:///khron_node/data/database.db', echo=True)
 
