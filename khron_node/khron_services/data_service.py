@@ -44,3 +44,6 @@ def add_event(_event):
     session.commit()
     print(f"event added with {_event}")
     return True
+
+def query_alert(_timestamp):
+    return session.query(Alert).filter_by(timestamp=_timestamp)
