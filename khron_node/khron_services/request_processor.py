@@ -17,7 +17,7 @@ def create_alert(_request_content):
     crud_event_type = "1" #see data configurations initial tables json
     task_type = "02" #see data configuration initial tables json
     khron_request_id = "" # not applicable to alerts
-    alert = {"id":_request_content["alertID"],'parent':_request_content['requestID'],'correlative':_request_content['alert_correlative'],'timestamp':datetime.fromtimestamp(_request_content["timestamp"], timezone.utc),}
+    alert = {"id":_request_content["alertID"],'parent':_request_content['requestID'],'correlative':_request_content['alert_correlative'],'timestamp':datetime.fromtimestamp(_request_content["timestamp"], timezone.utc), "status_id":"01"}
     event = {"type_id":crud_event_type,"time":datetime.now(timezone.utc),"task_type_id":task_type, "khron_request_id":khron_request_id, "alert_id":_request_content["alertID"]}
     add_alert(alert)
     add_event(event)

@@ -1,14 +1,7 @@
 venv
 .vscode
 __pycache__
-.history
-.hypothesis/
-build/
-reports/
-data.txt
-sandbox
-celerybeat-schedule
 *.env
 /logfiles
-database
+/database
 .DS_Store
