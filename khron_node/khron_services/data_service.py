@@ -31,7 +31,7 @@ def initialize_db():
     return "Initial Tables Created"
 
 def add_alert(_alert):
-    added_alert = Alert(id=_alert['id'],parent=_alert['parent'],correlative=_alert['correlative'],timestamp=_alert['timestamp'],status_id=1)
+    added_alert = Alert(id=_alert['id'],parent=_alert['parent'],correlative=_alert['correlative'],timestamp=_alert['timestamp'],status_id=_alert['status_id'])
     session.add(added_alert)
     session.commit()
     print(f"added alert with {_alert}")
@@ -47,3 +47,7 @@ def add_event(_event):
 
 def query_alert(_timestamp):
     return session.query(Alert).filter_by(timestamp=_timestamp)
+
+def modify_alert_status(_alert, status):
+    _alert.status_id = status
+    session.commit()

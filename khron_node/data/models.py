@@ -41,11 +41,11 @@ class Khron_Request(Base):
 class Alert(Base):
     __tablename__ = 'alerts'
 
-    id = Column(String, primary_key=True)
+    id = Column(String(64), primary_key=True)
     parent = Column(String(64))
     correlative = Column(Integer)
     timestamp = Column(TIMESTAMP, index=True)
-    status_id = Column(String(10),ForeignKey('status.id'))
+    status_id = Column(String(2),ForeignKey('status.id'))
 
 #-----------------------
 class Status(Base):

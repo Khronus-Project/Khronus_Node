@@ -49,15 +49,10 @@ def get_int(_bytes):
 def get_hex(_bytes):
     return str(_bytes.hex())
 
-# Returns a unix timestamp aproximated to the closest minute
+# Returns a unix timestamp 
 def get_time(_bytes):
     received_time = get_int(_bytes)
-    seconds_from_prev = received_time%60
-    prev_min = received_time - seconds_from_prev
-    if seconds_from_prev <= 30:
-        return prev_min
-    else:
-        return prev_min+60
+    return received_time
 
 def get_string(_bytes):
     return _bytes.decode('UTF-8')

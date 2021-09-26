@@ -5,14 +5,8 @@ import json
 import asyncio
 from khron_node.khron_services.request_processor import process_request
 from khron_node.khron_services.alert_processor import trigger_alert
+from khron_node.khron_services.web3_service import get_node_contract, get_event_filter
 from datetime import datetime
-
-load_dotenv()
-node_provider = environ['NODE_PROVIDER']
-web3_connection = Web3(Web3.HTTPProvider(node_provider))
-
-def are_we_connected():
-    return web3_connection.isConnected()
 
 def handle_event(event):
     request = dict(event.args)
@@ -34,11 +28,9 @@ async def check_time():
         else:
             await asyncio.sleep(60-seconds_from_prev)
 
-def listen(contract_address, abi_path):
-    with open(abi_path) as f:
-        abiJson = json.load(f)
-    contract = web3_connection.eth.contract(address=contract_address, abi=abiJson['abi'])
-    event_filter = contract.events.RequestReceived.createFilter(fromBlock='latest')
+def listen():
+    contract = get_node_contract()
+    event_filter = get_event_filter(contract)
     loop = asyncio.get_event_loop()
     try:
         loop.run_until_complete(

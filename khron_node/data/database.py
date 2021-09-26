@@ -10,5 +10,4 @@ if not path.exists(environ['DATABASE_PATH']):
 
 db_path = f"sqlite:///{environ['DATABASE_PATH']}/database.db"
 
-engine = create_engine(db_path, echo=True)
-
+engine = create_engine(db_path, echo=False)
