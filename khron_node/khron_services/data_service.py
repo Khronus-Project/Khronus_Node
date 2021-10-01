@@ -1,5 +1,5 @@
-from khron_node.data.models import Base, Event, Event_Type, Task_Type, Khron_Request, Alert, Status
-from khron_node.data.database import engine
+from data.models import Base, Event, Event_Type, Task_Type, Khron_Request, Alert, Status
+from data.database import engine
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from os import environ
@@ -31,10 +31,14 @@ def initialize_db():
     return "Initial Tables Created"
 
 def add_alert(_alert):
-    added_alert = Alert(id=_alert['id'],parent=_alert['parent'],correlative=_alert['correlative'],timestamp=_alert['timestamp'],status_id=_alert['status_id'])
-    session.add(added_alert)
-    session.commit()
-    print(f"added alert with {_alert}")
+    try:
+        added_alert = Alert(id=_alert['id'],parent=_alert['parent'],correlative=_alert['correlative'],timestamp=_alert['timestamp'],status_id=_alert['status_id'])
+        session.add(added_alert)
+        session.commit()
+        print(f"added alert with {_alert}")
+    except Exception as e:
+        print(f"Alert {_alert} already processed just checking here")
+        session.rollback()
     return True
 
 

@@ -13,7 +13,6 @@ def get_action_type(_byte_input):
     action_flag_length = 3
     raw_bytes = _byte_input[byte_input_length-action_flag_length:byte_input_length]
     action_type = type_switch(3)(raw_bytes)
-    print(action_type)
     if action_type not in grammars["Action_Types"]:
         raise ValueError(f"The type {action_type} that came with the byte request is not a valid action type")
     else:
