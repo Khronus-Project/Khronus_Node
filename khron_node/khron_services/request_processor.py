@@ -1,5 +1,5 @@
-from khron_node.khron_services.byte_services import decode, get_action_type
-from khron_node.khron_services.data_service import add_alert, add_event
+from khron_services.byte_services import decode, get_action_type
+from khron_services.data_service import add_alert, add_event
 from datetime import datetime, time, timezone
 
 def process_request(_request):

@@ -1,12 +1,15 @@
-from os import environ
-from web3 import Web3
-from dotenv import load_dotenv
-import json
 import asyncio
-from khron_node.khron_services.request_processor import process_request
-from khron_node.khron_services.alert_processor import trigger_alert
-from khron_node.khron_services.web3_service import get_node_contract, get_event_filter
+from khron_services.request_processor import process_request
+from khron_services.alert_processor import trigger_alert
+from khron_services.web3_service import get_node_contract, get_event_filter, initializeConfigs, getNodeProvider, are_we_connected
 from datetime import datetime
+import sys
+
+network = sys.argv
+
+def main(options):
+    initializeConfigs(options[1])
+    listen()
 
 def handle_event(event):
     request = dict(event.args)
@@ -37,3 +40,5 @@ def listen():
             asyncio.gather(log_loop(event_filter),check_time()))
     finally:
         loop.close()
+
+main(network)
