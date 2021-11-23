@@ -17,8 +17,12 @@ def handle_event(event):
 
 async def log_loop(event_filter):
     while True:
-        for event in event_filter.get_new_entries():
-            handle_event(event)
+        try:
+            events = event_filter.get_new_entries()
+            for event in events:
+                handle_event(event)
+        except Exception as e:
+            print("network is a bit slow")
         await asyncio.sleep(5)
 
 async def check_time():

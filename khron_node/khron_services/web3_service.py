@@ -24,6 +24,12 @@ def initializeConfigs(network):
         config_nodeContractAddress = environ["ADDRESS_RINKY"]
         config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
+    elif network == "bsc_test":
+        config_node_provider = environ['NODE_PROVIDER_BSC']
+        config_abiPath = environ["ABI_PATH_DEPLOYED"]
+        config_nodeContractAddress = environ["ADDRESS_BSC"]
+        config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
+        web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
     elif network == "ropsten":
         config_node_provider = environ['NODE_PROVIDER_ROPSTEN']
         config_abiPath = environ["ABI_PATH_DEPLOYED"]
@@ -59,8 +65,6 @@ def fulfill_alert(contract, alertID):
         function_call = contract.functions.fulfillAlert(alertID).buildTransaction(transaction_body)
         signed_transaction = web3_connection.eth.account.sign_transaction(function_call, config_nodePrivateKey)
         fulfill_tx = web3_connection.eth.send_raw_transaction(signed_transaction.rawTransaction)
-        #txt_receipt = web3_connection.eth.wait_for_transaction_receipt(fulfill_tx)
-        ##txt_receipt = web3_connection.eth.get_transaction_receipt(fulfill_tx)
         result = fulfill_tx
     else:
         result = {"Exception":"0001", "Description":"f'alertID {alertID} exceeds the allowed gas limit of 450000 units"}
@@ -73,7 +77,7 @@ def estimateAlertGas(contract, alertID):
         "from":getPublicKey(),
         "data":contract.encodeABI(fn_name="fulfillAlert", args=[alertID])
     }
-    return web3_connection.eth.estimate_gas(transaction_body) + 10000
+    return web3_connection.eth.estimate_gas(transaction_body) + 70000
 
 def getPublicKey():
     account = web3_connection.eth.account.from_key(config_nodePrivateKey)
