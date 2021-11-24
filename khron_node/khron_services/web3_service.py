@@ -25,7 +25,7 @@ def initializeConfigs(network):
         config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
     elif network == "bsc_test":
-        config_node_provider = environ['NODE_PROVIDER_BSC']
+        config_node_provider = environ['NODE_PROVIDER_BSC_OFFICIAL']
         config_abiPath = environ["ABI_PATH_DEPLOYED"]
         config_nodeContractAddress = environ["ADDRESS_BSC"]
         config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
@@ -52,17 +52,19 @@ def get_node_contract():
         print (e, config_abiPath)
 
 def get_event_filter(contract):
+    are_we_connected()
     return contract.events.RequestReceived.createFilter(fromBlock='latest')
 
 def fulfill_alert(contract, alertID):
     estimated_gas = estimateAlertGas(contract, alertID)
-    if estimated_gas <= 450000:
+    if estimated_gas <= 300000:
         transaction_body = {
             "nonce":web3_connection.eth.get_transaction_count(getPublicKey()),
             'gas': estimated_gas,
-            'gasPrice': web3_connection.toWei('1', 'gwei')
+            #'gasPrice': web3_connection.toWei('1', 'gwei')
         }
         function_call = contract.functions.fulfillAlert(alertID).buildTransaction(transaction_body)
+        #print(contract.functions.fulfillAlert(alertID).estimateGas())
         signed_transaction = web3_connection.eth.account.sign_transaction(function_call, config_nodePrivateKey)
         fulfill_tx = web3_connection.eth.send_raw_transaction(signed_transaction.rawTransaction)
         result = fulfill_tx
@@ -77,7 +79,7 @@ def estimateAlertGas(contract, alertID):
         "from":getPublicKey(),
         "data":contract.encodeABI(fn_name="fulfillAlert", args=[alertID])
     }
-    return web3_connection.eth.estimate_gas(transaction_body) + 70000
+    return web3_connection.eth.estimate_gas(transaction_body) + 100000
 
 def getPublicKey():
     account = web3_connection.eth.account.from_key(config_nodePrivateKey)
