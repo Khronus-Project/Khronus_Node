@@ -61,6 +61,7 @@ def fulfill_alert(contract, alertID):
         transaction_body = {
             "nonce":web3_connection.eth.get_transaction_count(getPublicKey()),
             'gas': estimated_gas,
+            #'gasPrice': web3_connection.toWei('10', 'gwei')
         }
         function_call = contract.functions.fulfillAlert(alertID).buildTransaction(transaction_body)
         print(contract.functions.fulfillAlert(alertID).estimateGas())
@@ -71,6 +72,17 @@ def fulfill_alert(contract, alertID):
     else:
         result = {"Exception":"0001", "Description":"f'alertID {alertID} exceeds the allowed gas limit of 450000 units"}
     return result
+
+def estimateAlertGas(contract, alertID):
+    transaction_body = {
+        "nonce":web3_connection.eth.get_transaction_count(getPublicKey()),
+        "to":contract.address,
+        "from":getPublicKey(),
+        "data":contract.encodeABI(fn_name="fulfillAlert", args=[alertID])
+    }
+    estimation = web3_connection.eth.estimate_gas(transaction_body)
+    print(estimation)
+    return  estimation + 100000
 
 def getPublicKey():
     account = web3_connection.eth.account.from_key(config_nodePrivateKey)
