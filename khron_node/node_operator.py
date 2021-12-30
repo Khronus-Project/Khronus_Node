@@ -1,14 +1,14 @@
 import asyncio
 from khron_services.request_processor import process_request
 from khron_services.alert_processor import trigger_alert
-from khron_services.web3_service import get_node_contract, get_event_filter, initializeConfigs, getNodeProvider, are_we_connected
+from khron_services.web3_service import get_node_contract, get_event_filter, initialize_configs
 from datetime import datetime
 import sys
 
 network = sys.argv
 
 def main(options):
-    initializeConfigs(options[1])
+    initialize_configs(options[1])
     listen()
 
 def handle_event(event):

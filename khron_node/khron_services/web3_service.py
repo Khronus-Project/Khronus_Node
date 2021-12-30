@@ -1,11 +1,12 @@
 from os import environ
 from web3 import Web3
+from web3.middleware import geth_poa_middleware
 from dotenv import load_dotenv
 import json
 
 load_dotenv()
 
-def initializeConfigs(network):
+def initialize_configs(network):
     global config_node_provider 
     global config_abiPath 
     global config_nodeContractAddress 
@@ -17,25 +18,32 @@ def initializeConfigs(network):
         config_nodeContractAddress = environ["ADDRESS_LOCAL"]
         config_nodePrivateKey = environ["PRIVATE_KEY_LOCAL"]
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
-        print("connected local")
+        set_POA_middleware()
+        print(f'connected {network}')
     elif network == "rinkeby":
         config_node_provider = environ['NODE_PROVIDER_RINKY']
         config_abiPath = environ["ABI_PATH_DEPLOYED"]
         config_nodeContractAddress = environ["ADDRESS_RINKY"]
         config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
+        set_POA_middleware()
+        print(f'connected {network}')
     elif network == "bsc_test":
         config_node_provider = environ['NODE_PROVIDER_BSC_OFFICIAL']
         config_abiPath = environ["ABI_PATH_DEPLOYED"]
         config_nodeContractAddress = environ["ADDRESS_BSC"]
         config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
+        set_POA_middleware()
+        print(f'connected {network}')
     elif network == "ropsten":
         config_node_provider = environ['NODE_PROVIDER_ROPSTEN']
         config_abiPath = environ["ABI_PATH_DEPLOYED"]
         config_nodeContractAddress = environ["ADDRESS_ROPTSTEN"]
         config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
+        set_POA_middleware()
+        print(f'connected {network}')
     else:
         print("Unsoported Network")
 
@@ -59,13 +67,12 @@ def fulfill_alert(contract, alertID):
     estimated_gas = contract.functions.fulfillAlert(alertID).estimateGas()
     if estimated_gas <= 300000:
         transaction_body = {
-            "nonce":web3_connection.eth.get_transaction_count(getPublicKey()),
-            'gas': estimated_gas,
-            #'gasPrice': web3_connection.toWei('10', 'gwei')
+            "nonce":web3_connection.eth.get_transaction_count(get_public_key()),
+            "gas":150000
         }
         function_call = contract.functions.fulfillAlert(alertID).buildTransaction(transaction_body)
-        print(contract.functions.fulfillAlert(alertID).estimateGas())
-        print(contract.functions.testing().estimateGas())
+        print(f'Estimated gas to fulfill alert {contract.functions.fulfillAlert(alertID).estimateGas()}')
+        print(f'Mock function estimated gas {contract.functions.testing().estimateGas()}')
         signed_transaction = web3_connection.eth.account.sign_transaction(function_call, config_nodePrivateKey)
         fulfill_tx = web3_connection.eth.send_raw_transaction(signed_transaction.rawTransaction)
         result = fulfill_tx
@@ -73,21 +80,16 @@ def fulfill_alert(contract, alertID):
         result = {"Exception":"0001", "Description":"f'alertID {alertID} exceeds the allowed gas limit of 450000 units"}
     return result
 
-def estimateAlertGas(contract, alertID):
-    transaction_body = {
-        "nonce":web3_connection.eth.get_transaction_count(getPublicKey()),
-        "to":contract.address,
-        "from":getPublicKey(),
-        "data":contract.encodeABI(fn_name="fulfillAlert", args=[alertID])
-    }
-    estimation = web3_connection.eth.estimate_gas(transaction_body)
-    print(estimation)
-    return  estimation + 100000
-
-def getPublicKey():
+def get_public_key():
     account = web3_connection.eth.account.from_key(config_nodePrivateKey)
     return account.address
 
 
-def getNodeProvider():
+def get_node_provider():
     return (config_node_provider)
+
+def get_blockchain_timestamp():
+    return web3_connection.eth.get_block("latest").timestamp
+
+def set_POA_middleware():
+    web3_connection.middleware_onion.inject(geth_poa_middleware, layer=0)
