@@ -1,3 +1,4 @@
+from web3.types import Timestamp
 from data.models import Base, Event, Event_Type, Task_Type, Khron_Request, Alert, Status
 from data.database import engine
 from sqlalchemy.orm import sessionmaker
@@ -49,8 +50,8 @@ def add_event(_event):
     print(f"event added with {_event}")
     return True
 
-def query_alert(_timestamp):
-    return session.query(Alert).filter_by(timestamp=_timestamp)
+def query_alerts(_timestamp):
+    return session.query(Alert).filter(Alert.timestamp >= _timestamp, Alert.timestamp < _timestamp+60)
 
 def modify_alert_status(_alert, status):
     _alert.status_id = status

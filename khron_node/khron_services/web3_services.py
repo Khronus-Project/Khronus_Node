@@ -60,7 +60,6 @@ def get_node_contract():
         print (e, config_abiPath)
 
 def get_event_filter(contract):
-    are_we_connected()
     return contract.events.RequestReceived.createFilter(fromBlock='latest')
 
 def fulfill_alert(contract, alertID):
@@ -68,7 +67,7 @@ def fulfill_alert(contract, alertID):
     if estimated_gas <= 300000:
         transaction_body = {
             "nonce":web3_connection.eth.get_transaction_count(get_public_key()),
-            "gas":150000
+            "gas":estimated_gas
         }
         function_call = contract.functions.fulfillAlert(alertID).buildTransaction(transaction_body)
         print(f'Estimated gas to fulfill alert {contract.functions.fulfillAlert(alertID).estimateGas()}')
@@ -76,6 +75,7 @@ def fulfill_alert(contract, alertID):
         signed_transaction = web3_connection.eth.account.sign_transaction(function_call, config_nodePrivateKey)
         fulfill_tx = web3_connection.eth.send_raw_transaction(signed_transaction.rawTransaction)
         result = fulfill_tx
+        web3_connection.eth.wait_for_transaction_receipt(fulfill_tx)
     else:
         result = {"Exception":"0001", "Description":"f'alertID {alertID} exceeds the allowed gas limit of 450000 units"}
     return result

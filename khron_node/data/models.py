@@ -44,7 +44,7 @@ class Alert(Base):
     id = Column(String(64), primary_key=True)
     parent = Column(String(64))
     correlative = Column(Integer)
-    timestamp = Column(TIMESTAMP, index=True)
+    timestamp = Column(Integer, index=True)
     status_id = Column(String(2),ForeignKey('status.id'))
 
 #-----------------------
