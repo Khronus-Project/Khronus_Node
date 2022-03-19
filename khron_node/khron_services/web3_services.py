@@ -64,14 +64,13 @@ def get_event_filter(contract):
 
 def fulfill_alert(contract, alertID):
     estimated_gas = contract.functions.fulfillAlert(alertID).estimateGas()
-    if estimated_gas <= 300000:
+    if estimated_gas <= 450000:
         transaction_body = {
             "nonce":web3_connection.eth.get_transaction_count(get_public_key()),
             "gas":estimated_gas
         }
         function_call = contract.functions.fulfillAlert(alertID).buildTransaction(transaction_body)
         print(f'Estimated gas to fulfill alert {contract.functions.fulfillAlert(alertID).estimateGas()}')
-        print(f'Mock function estimated gas {contract.functions.testing().estimateGas()}')
         signed_transaction = web3_connection.eth.account.sign_transaction(function_call, config_nodePrivateKey)
         fulfill_tx = web3_connection.eth.send_raw_transaction(signed_transaction.rawTransaction)
         result = fulfill_tx
