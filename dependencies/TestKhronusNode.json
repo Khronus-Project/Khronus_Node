@@ -1,0 +1,3587 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_khronus_Coordinator",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "khronNode",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "NodeSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "OwnerTransfered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "RequestReceived",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "totalGas",
+          "type": "uint256"
+        }
+      ],
+      "name": "RequestServed",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_alertID",
+          "type": "bytes32"
+        }
+      ],
+      "name": "fulfillAlert",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getNode",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_sender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onTokenTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_khronNode",
+          "type": "address"
+        }
+      ],
+      "name": "setKhronNode",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "2": "contracts/node_test.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/node_test.sol",
+    "exportedSymbols": {
+      "KhronusCoordinatorInterface": [
+        273
+      ],
+      "KhronusNode": [
+        184
+      ],
+      "TestKhronusNode": [
+        14
+      ]
+    },
+    "id": 15,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:2"
+      },
+      {
+        "absolutePath": "/Users/danielherrera/.brownie/packages/khronus-project/khronus_utils@0.0.2/contracts/KhronusNodeBase.sol",
+        "file": "@khronus/khronus-utils@0.0.2/contracts/KhronusNodeBase.sol",
+        "id": 2,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 15,
+        "sourceUnit": 185,
+        "src": "174:68:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3,
+              "name": "KhronusNode",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 184,
+              "src": "273:11:2"
+            },
+            "id": 4,
+            "nodeType": "InheritanceSpecifier",
+            "src": "273:11:2"
+          }
+        ],
+        "canonicalName": "TestKhronusNode",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 14,
+        "linearizedBaseContracts": [
+          14,
+          184
+        ],
+        "name": "TestKhronusNode",
+        "nameLocation": "254:15:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 12,
+              "nodeType": "Block",
+              "src": "368:16:2",
+              "statements": []
+            },
+            "id": 13,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "id": 9,
+                    "name": "_khronus_Coordinator",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 6,
+                    "src": "346:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 10,
+                "kind": "baseConstructorSpecifier",
+                "modifierName": {
+                  "id": 8,
+                  "name": "KhronusNode",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 184,
+                  "src": "334:11:2"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "334:33:2"
+              }
+            ],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6,
+                  "mutability": "mutable",
+                  "name": "_khronus_Coordinator",
+                  "nameLocation": "312:20:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13,
+                  "src": "304:28:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "304:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "303:30:2"
+            },
+            "returnParameters": {
+              "id": 11,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "368:0:2"
+            },
+            "scope": 14,
+            "src": "291:93:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 15,
+        "src": "245:141:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:354:2"
+  },
+  "bytecode": "608060405234801561001057600080fd5b5060405161066b38038061066b83398101604081905261002f9161005d565b600080546001600160a01b039092166001600160a01b0319928316179055600280549091163317905561008d565b60006020828403121561006f57600080fd5b81516001600160a01b038116811461008657600080fd5b9392505050565b6105cf8061009c6000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c8063743e92ee14610067578063893d20e814610090578063a4c0ed36146100a1578063b49a9429146100b6578063f2fde38b146100c9578063f4c066af146100dc575b600080fd5b6001546001600160a01b03165b6040516001600160a01b03909116815260200160405180910390f35b6002546001600160a01b0316610074565b6100b46100af3660046103ef565b6100ef565b005b6100b46100c43660046104ba565b610137565b6100b46100d73660046104d3565b61025f565b6100b46100ea3660046104d3565b61030f565b826001600160a01b03167f68673052f6fb5d6e65ffb26edcd2394ed5509acfeaf07fe99909055f10767dfc838360405161012a9291906104f5565b60405180910390a2505050565b6001546001600160a01b031633146101a15760405162461bcd60e51b815260206004820152602260248201527f4f6e6c79204b68726f6e204e6f64652063616e2066756c66696c6c20616c6572604482015261747360f01b60648201526084015b60405180910390fd5b60005a600054604051632ed95a8760e21b8152600481018590529192506001600160a01b03169063bb656a1c906024016020604051808303816000875af11580156101f0573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102149190610552565b505a6102209082610574565b90507f07ac3a7fd27706d3839b4ccbdbba62f9ac33d47ddcfe46b70e0477a9287b2bbf8160405161025391815260200190565b60405180910390a15050565b6002546001600160a01b031633146102b95760405162461bcd60e51b815260206004820152601c60248201527f4f6e6c79206f776e65722063616e20736574206e6577206f776e6572000000006044820152606401610198565b600280546001600160a01b0319166001600160a01b03831690811790915560405142815233907f02a77ab878bb8ec2e1fe5f644f1e082a981838214b97895416f35b164292423d9060200160405180910390a350565b6002546001600160a01b031633146103695760405162461bcd60e51b815260206004820152601760248201527f4f6e6c79206f776e65722063616e20736574204e6f64650000000000000000006044820152606401610198565b600180546001600160a01b0319166001600160a01b0383169081179091556040514281527fc25b8faa6eaf43fc8784f55dabc7e50b75d3dcb3ab32f163d347633e0b1185ac9060200160405180910390a250565b80356001600160a01b03811681146103d457600080fd5b919050565b634e487b7160e01b600052604160045260246000fd5b60008060006060848603121561040457600080fd5b61040d846103bd565b925060208401359150604084013567ffffffffffffffff8082111561043157600080fd5b818601915086601f83011261044557600080fd5b813581811115610457576104576103d9565b604051601f8201601f19908116603f0116810190838211818310171561047f5761047f6103d9565b8160405282815289602084870101111561049857600080fd5b8260208601602083013760006020848301015280955050505050509250925092565b6000602082840312156104cc57600080fd5b5035919050565b6000602082840312156104e557600080fd5b6104ee826103bd565b9392505050565b82815260006020604081840152835180604085015260005b818110156105295785810183015185820160600152820161050d565b8181111561053b576000606083870101525b50601f01601f191692909201606001949350505050565b60006020828403121561056457600080fd5b815180151581146104ee57600080fd5b60008282101561059457634e487b7160e01b600052601160045260246000fd5b50039056fea2646970667358221220f43672cf999c6c33850bc0d8dba7cc514c280471292f9ab4e2c4e4b38caea67664736f6c634300080c0033",
+  "bytecodeSha1": "e1ac5d8e7f69f68cdb4289e048a14a438e71a8d0",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.8.12+commit.f00d7308"
+  },
+  "contractName": "TestKhronusNode",
+  "coverageMap": {
+    "branches": {
+      "2": {}
+    },
+    "statements": {
+      "2": {}
+    }
+  },
+  "dependencies": [],
+  "deployedBytecode": "608060405234801561001057600080fd5b50600436106100625760003560e01c8063743e92ee14610067578063893d20e814610090578063a4c0ed36146100a1578063b49a9429146100b6578063f2fde38b146100c9578063f4c066af146100dc575b600080fd5b6001546001600160a01b03165b6040516001600160a01b03909116815260200160405180910390f35b6002546001600160a01b0316610074565b6100b46100af3660046103ef565b6100ef565b005b6100b46100c43660046104ba565b610137565b6100b46100d73660046104d3565b61025f565b6100b46100ea3660046104d3565b61030f565b826001600160a01b03167f68673052f6fb5d6e65ffb26edcd2394ed5509acfeaf07fe99909055f10767dfc838360405161012a9291906104f5565b60405180910390a2505050565b6001546001600160a01b031633146101a15760405162461bcd60e51b815260206004820152602260248201527f4f6e6c79204b68726f6e204e6f64652063616e2066756c66696c6c20616c6572604482015261747360f01b60648201526084015b60405180910390fd5b60005a600054604051632ed95a8760e21b8152600481018590529192506001600160a01b03169063bb656a1c906024016020604051808303816000875af11580156101f0573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102149190610552565b505a6102209082610574565b90507f07ac3a7fd27706d3839b4ccbdbba62f9ac33d47ddcfe46b70e0477a9287b2bbf8160405161025391815260200190565b60405180910390a15050565b6002546001600160a01b031633146102b95760405162461bcd60e51b815260206004820152601c60248201527f4f6e6c79206f776e65722063616e20736574206e6577206f776e6572000000006044820152606401610198565b600280546001600160a01b0319166001600160a01b03831690811790915560405142815233907f02a77ab878bb8ec2e1fe5f644f1e082a981838214b97895416f35b164292423d9060200160405180910390a350565b6002546001600160a01b031633146103695760405162461bcd60e51b815260206004820152601760248201527f4f6e6c79206f776e65722063616e20736574204e6f64650000000000000000006044820152606401610198565b600180546001600160a01b0319166001600160a01b0383169081179091556040514281527fc25b8faa6eaf43fc8784f55dabc7e50b75d3dcb3ab32f163d347633e0b1185ac9060200160405180910390a250565b80356001600160a01b03811681146103d457600080fd5b919050565b634e487b7160e01b600052604160045260246000fd5b60008060006060848603121561040457600080fd5b61040d846103bd565b925060208401359150604084013567ffffffffffffffff8082111561043157600080fd5b818601915086601f83011261044557600080fd5b813581811115610457576104576103d9565b604051601f8201601f19908116603f0116810190838211818310171561047f5761047f6103d9565b8160405282815289602084870101111561049857600080fd5b8260208601602083013760006020848301015280955050505050509250925092565b6000602082840312156104cc57600080fd5b5035919050565b6000602082840312156104e557600080fd5b6104ee826103bd565b9392505050565b82815260006020604081840152835180604085015260005b818110156105295785810183015185820160600152820161050d565b8181111561053b576000606083870101525b50601f01601f191692909201606001949350505050565b60006020828403121561056457600080fd5b815180151581146104ee57600080fd5b60008282101561059457634e487b7160e01b600052601160045260246000fd5b50039056fea2646970667358221220f43672cf999c6c33850bc0d8dba7cc514c280471292f9ab4e2c4e4b38caea67664736f6c634300080c0033",
+  "deployedSourceMap": "245:141:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1634:83:0;1701:9;;-1:-1:-1;;;;;1701:9:0;1634:83;;;-1:-1:-1;;;;;178:32:3;;;160:51;;148:2;133:18;1634:83:0;;;;;;;1548:80;1616:5;;-1:-1:-1;;;;;1616:5:0;1548:80;;1723:199;;;;;;:::i;:::-;;:::i;:::-;;792:296;;;;;;:::i;:::-;;:::i;1308:230::-;;;;;;:::i;:::-;;:::i;1095:207::-;;;;;;:::i;:::-;;:::i;1723:199::-;1890:7;-1:-1:-1;;;;;1874:37:0;;1898:6;1905:5;1874:37;;;;;;;:::i;:::-;;;;;;;;1723:199;;;:::o;792:296::-;874:9;;-1:-1:-1;;;;;874:9:0;860:10;:23;851:71;;;;-1:-1:-1;;;851:71:0;;2849:2:3;851:71:0;;;2831:21:3;2888:2;2868:18;;;2861:30;2927:34;2907:18;;;2900:62;-1:-1:-1;;;2978:18:3;;;2971:32;3020:19;;851:71:0;;;;;;;;;932:13;949:9;968:18;;:44;;-1:-1:-1;;;968:44:0;;;;;3196:25:3;;;932:26:0;;-1:-1:-1;;;;;;968:18:0;;:34;;3169:18:3;;968:44:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1034:9;1022:21;;;;:::i;:::-;;;1058:23;1072:8;1058:23;;;;3196:25:3;;3184:2;3169:18;;3050:177;1058:23:0;;;;;;;;841:247;792:296;:::o;1308:230::-;1396:5;;-1:-1:-1;;;;;1396:5:0;1382:10;:19;1373:61;;;;-1:-1:-1;;;1373:61:0;;4125:2:3;1373:61:0;;;4107:21:3;4164:2;4144:18;;;4137:30;4203;4183:18;;;4176:58;4251:18;;1373:61:0;3923:352:3;1373:61:0;1444:5;:17;;-1:-1:-1;;;;;;1444:17:0;-1:-1:-1;;;;;1444:17:0;;;;;;;;1476:55;;1515:15;3196:25:3;;1492:10:0;;1476:55;;3184:2:3;3169:18;1476:55:0;;;;;;;1308:230;:::o;1095:207::-;1179:5;;-1:-1:-1;;;;;1179:5:0;1165:10;:19;1156:56;;;;-1:-1:-1;;;1156:56:0;;4482:2:3;1156:56:0;;;4464:21:3;4521:2;4501:18;;;4494:30;4560:25;4540:18;;;4533:53;4603:18;;1156:56:0;4280:347:3;1156:56:0;1222:9;:22;;-1:-1:-1;;;;;;1222:22:0;-1:-1:-1;;;;;1222:22:0;;;;;;;;1259:36;;1279:15;3196:25:3;;1259:36:0;;3184:2:3;3169:18;1259:36:0;;;;;;;1095:207;:::o;222:173:3:-;290:20;;-1:-1:-1;;;;;339:31:3;;329:42;;319:70;;385:1;382;375:12;319:70;222:173;;;:::o;400:127::-;461:10;456:3;452:20;449:1;442:31;492:4;489:1;482:15;516:4;513:1;506:15;532:1063;618:6;626;634;687:2;675:9;666:7;662:23;658:32;655:52;;;703:1;700;693:12;655:52;726:29;745:9;726:29;:::i;:::-;716:39;;802:2;791:9;787:18;774:32;764:42;;857:2;846:9;842:18;829:32;880:18;921:2;913:6;910:14;907:34;;;937:1;934;927:12;907:34;975:6;964:9;960:22;950:32;;1020:7;1013:4;1009:2;1005:13;1001:27;991:55;;1042:1;1039;1032:12;991:55;1078:2;1065:16;1100:2;1096;1093:10;1090:36;;;1106:18;;:::i;:::-;1181:2;1175:9;1149:2;1235:13;;-1:-1:-1;;1231:22:3;;;1255:2;1227:31;1223:40;1211:53;;;1279:18;;;1299:22;;;1276:46;1273:72;;;1325:18;;:::i;:::-;1365:10;1361:2;1354:22;1400:2;1392:6;1385:18;1440:7;1435:2;1430;1426;1422:11;1418:20;1415:33;1412:53;;;1461:1;1458;1451:12;1412:53;1517:2;1512;1508;1504:11;1499:2;1491:6;1487:15;1474:46;1562:1;1557:2;1552;1544:6;1540:15;1536:24;1529:35;1583:6;1573:16;;;;;;;532:1063;;;;;:::o;1600:180::-;1659:6;1712:2;1700:9;1691:7;1687:23;1683:32;1680:52;;;1728:1;1725;1718:12;1680:52;-1:-1:-1;1751:23:3;;1600:180;-1:-1:-1;1600:180:3:o;1785:186::-;1844:6;1897:2;1885:9;1876:7;1872:23;1868:32;1865:52;;;1913:1;1910;1903:12;1865:52;1936:29;1955:9;1936:29;:::i;:::-;1926:39;1785:186;-1:-1:-1;;;1785:186:3:o;1976:666::-;2151:6;2140:9;2133:25;2114:4;2177:2;2215;2210;2199:9;2195:18;2188:30;2247:6;2241:13;2290:6;2285:2;2274:9;2270:18;2263:34;2315:1;2325:140;2339:6;2336:1;2333:13;2325:140;;;2434:14;;;2430:23;;2424:30;2400:17;;;2419:2;2396:26;2389:66;2354:10;;2325:140;;;2483:6;2480:1;2477:13;2474:91;;;2553:1;2548:2;2539:6;2528:9;2524:22;2520:31;2513:42;2474:91;-1:-1:-1;2626:2:3;2605:15;-1:-1:-1;;2601:29:3;2586:45;;;;2633:2;2582:54;;1976:666;-1:-1:-1;;;;1976:666:3:o;3232:277::-;3299:6;3352:2;3340:9;3331:7;3327:23;3323:32;3320:52;;;3368:1;3365;3358:12;3320:52;3400:9;3394:16;3453:5;3446:13;3439:21;3432:5;3429:32;3419:60;;3475:1;3472;3465:12;3514:222;3554:4;3582:1;3579;3576:8;3573:131;;;3626:10;3621:3;3617:20;3614:1;3607:31;3661:4;3658:1;3651:15;3689:4;3686:1;3679:15;3573:131;-1:-1:-1;3721:9:3;;3514:222::o",
+  "language": "Solidity",
+  "natspec": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "offset": [
+    245,
+    386
+  ],
+  "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x62 JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x743E92EE EQ PUSH2 0x67 JUMPI DUP1 PUSH4 0x893D20E8 EQ PUSH2 0x90 JUMPI DUP1 PUSH4 0xA4C0ED36 EQ PUSH2 0xA1 JUMPI DUP1 PUSH4 0xB49A9429 EQ PUSH2 0xB6 JUMPI DUP1 PUSH4 0xF2FDE38B EQ PUSH2 0xC9 JUMPI DUP1 PUSH4 0xF4C066AF EQ PUSH2 0xDC JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND JUMPDEST PUSH1 0x40 MLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP1 SWAP2 AND DUP2 MSTORE PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH1 0x2 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0x74 JUMP JUMPDEST PUSH2 0xB4 PUSH2 0xAF CALLDATASIZE PUSH1 0x4 PUSH2 0x3EF JUMP JUMPDEST PUSH2 0xEF JUMP JUMPDEST STOP JUMPDEST PUSH2 0xB4 PUSH2 0xC4 CALLDATASIZE PUSH1 0x4 PUSH2 0x4BA JUMP JUMPDEST PUSH2 0x137 JUMP JUMPDEST PUSH2 0xB4 PUSH2 0xD7 CALLDATASIZE PUSH1 0x4 PUSH2 0x4D3 JUMP JUMPDEST PUSH2 0x25F JUMP JUMPDEST PUSH2 0xB4 PUSH2 0xEA CALLDATASIZE PUSH1 0x4 PUSH2 0x4D3 JUMP JUMPDEST PUSH2 0x30F JUMP JUMPDEST DUP3 PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH32 0x68673052F6FB5D6E65FFB26EDCD2394ED5509ACFEAF07FE99909055F10767DFC DUP4 DUP4 PUSH1 0x40 MLOAD PUSH2 0x12A SWAP3 SWAP2 SWAP1 PUSH2 0x4F5 JUMP JUMPDEST PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 LOG2 POP POP POP JUMP JUMPDEST PUSH1 0x1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x1A1 JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x22 PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4F6E6C79204B68726F6E204E6F64652063616E2066756C66696C6C20616C6572 PUSH1 0x44 DUP3 ADD MSTORE PUSH2 0x7473 PUSH1 0xF0 SHL PUSH1 0x64 DUP3 ADD MSTORE PUSH1 0x84 ADD JUMPDEST PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 REVERT JUMPDEST PUSH1 0x0 GAS PUSH1 0x0 SLOAD PUSH1 0x40 MLOAD PUSH4 0x2ED95A87 PUSH1 0xE2 SHL DUP2 MSTORE PUSH1 0x4 DUP2 ADD DUP6 SWAP1 MSTORE SWAP2 SWAP3 POP PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 PUSH4 0xBB656A1C SWAP1 PUSH1 0x24 ADD PUSH1 0x20 PUSH1 0x40 MLOAD DUP1 DUP4 SUB DUP2 PUSH1 0x0 DUP8 GAS CALL ISZERO DUP1 ISZERO PUSH2 0x1F0 JUMPI RETURNDATASIZE PUSH1 0x0 DUP1 RETURNDATACOPY RETURNDATASIZE PUSH1 0x0 REVERT JUMPDEST POP POP POP POP PUSH1 0x40 MLOAD RETURNDATASIZE PUSH1 0x1F NOT PUSH1 0x1F DUP3 ADD AND DUP3 ADD DUP1 PUSH1 0x40 MSTORE POP DUP2 ADD SWAP1 PUSH2 0x214 SWAP2 SWAP1 PUSH2 0x552 JUMP JUMPDEST POP GAS PUSH2 0x220 SWAP1 DUP3 PUSH2 0x574 JUMP JUMPDEST SWAP1 POP PUSH32 0x7AC3A7FD27706D3839B4CCBDBBA62F9AC33D47DDCFE46B70E0477A9287B2BBF DUP2 PUSH1 0x40 MLOAD PUSH2 0x253 SWAP2 DUP2 MSTORE PUSH1 0x20 ADD SWAP1 JUMP JUMPDEST PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 LOG1 POP POP JUMP JUMPDEST PUSH1 0x2 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x2B9 JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x1C PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4F6E6C79206F776E65722063616E20736574206E6577206F776E657200000000 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH2 0x198 JUMP JUMPDEST PUSH1 0x2 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP4 AND SWAP1 DUP2 OR SWAP1 SWAP2 SSTORE PUSH1 0x40 MLOAD TIMESTAMP DUP2 MSTORE CALLER SWAP1 PUSH32 0x2A77AB878BB8EC2E1FE5F644F1E082A981838214B97895416F35B164292423D SWAP1 PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 LOG3 POP JUMP JUMPDEST PUSH1 0x2 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x369 JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x17 PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4F6E6C79206F776E65722063616E20736574204E6F6465000000000000000000 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH2 0x198 JUMP JUMPDEST PUSH1 0x1 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP4 AND SWAP1 DUP2 OR SWAP1 SWAP2 SSTORE PUSH1 0x40 MLOAD TIMESTAMP DUP2 MSTORE PUSH32 0xC25B8FAA6EAF43FC8784F55DABC7E50B75D3DCB3AB32F163D347633E0B1185AC SWAP1 PUSH1 0x20 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 LOG2 POP JUMP JUMPDEST DUP1 CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP2 AND DUP2 EQ PUSH2 0x3D4 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST SWAP2 SWAP1 POP JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH1 0x0 MSTORE PUSH1 0x41 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH1 0x0 REVERT JUMPDEST PUSH1 0x0 DUP1 PUSH1 0x0 PUSH1 0x60 DUP5 DUP7 SUB SLT ISZERO PUSH2 0x404 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x40D DUP5 PUSH2 0x3BD JUMP JUMPDEST SWAP3 POP PUSH1 0x20 DUP5 ADD CALLDATALOAD SWAP2 POP PUSH1 0x40 DUP5 ADD CALLDATALOAD PUSH8 0xFFFFFFFFFFFFFFFF DUP1 DUP3 GT ISZERO PUSH2 0x431 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP2 DUP7 ADD SWAP2 POP DUP7 PUSH1 0x1F DUP4 ADD SLT PUSH2 0x445 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP2 CALLDATALOAD DUP2 DUP2 GT ISZERO PUSH2 0x457 JUMPI PUSH2 0x457 PUSH2 0x3D9 JUMP JUMPDEST PUSH1 0x40 MLOAD PUSH1 0x1F DUP3 ADD PUSH1 0x1F NOT SWAP1 DUP2 AND PUSH1 0x3F ADD AND DUP2 ADD SWAP1 DUP4 DUP3 GT DUP2 DUP4 LT OR ISZERO PUSH2 0x47F JUMPI PUSH2 0x47F PUSH2 0x3D9 JUMP JUMPDEST DUP2 PUSH1 0x40 MSTORE DUP3 DUP2 MSTORE DUP10 PUSH1 0x20 DUP5 DUP8 ADD ADD GT ISZERO PUSH2 0x498 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP3 PUSH1 0x20 DUP7 ADD PUSH1 0x20 DUP4 ADD CALLDATACOPY PUSH1 0x0 PUSH1 0x20 DUP5 DUP4 ADD ADD MSTORE DUP1 SWAP6 POP POP POP POP POP POP SWAP3 POP SWAP3 POP SWAP3 JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x4CC JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD SWAP2 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x4E5 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x4EE DUP3 PUSH2 0x3BD JUMP JUMPDEST SWAP4 SWAP3 POP POP POP JUMP JUMPDEST DUP3 DUP2 MSTORE PUSH1 0x0 PUSH1 0x20 PUSH1 0x40 DUP2 DUP5 ADD MSTORE DUP4 MLOAD DUP1 PUSH1 0x40 DUP6 ADD MSTORE PUSH1 0x0 JUMPDEST DUP2 DUP2 LT ISZERO PUSH2 0x529 JUMPI DUP6 DUP2 ADD DUP4 ADD MLOAD DUP6 DUP3 ADD PUSH1 0x60 ADD MSTORE DUP3 ADD PUSH2 0x50D JUMP JUMPDEST DUP2 DUP2 GT ISZERO PUSH2 0x53B JUMPI PUSH1 0x0 PUSH1 0x60 DUP4 DUP8 ADD ADD MSTORE JUMPDEST POP PUSH1 0x1F ADD PUSH1 0x1F NOT AND SWAP3 SWAP1 SWAP3 ADD PUSH1 0x60 ADD SWAP5 SWAP4 POP POP POP POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x564 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP2 MLOAD DUP1 ISZERO ISZERO DUP2 EQ PUSH2 0x4EE JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x0 DUP3 DUP3 LT ISZERO PUSH2 0x594 JUMPI PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH1 0x0 MSTORE PUSH1 0x11 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH1 0x0 REVERT JUMPDEST POP SUB SWAP1 JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 DELEGATECALL CALLDATASIZE PUSH19 0xCF999C6C33850BC0D8DBA7CC514C280471292F SWAP11 0xB4 0xE2 0xC4 0xE4 0xB3 DUP13 0xAE 0xA6 PUSH23 0x64736F6C634300080C0033000000000000000000000000 ",
+  "pcMap": {
+    "0": {
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH1",
+      "path": "2",
+      "value": "0x80"
+    },
+    "2": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH1",
+      "path": "2",
+      "value": "0x40"
+    },
+    "4": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "MSTORE",
+      "path": "2"
+    },
+    "5": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "CALLVALUE",
+      "path": "2"
+    },
+    "6": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "7": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "ISZERO",
+      "path": "2"
+    },
+    "8": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0x10"
+    },
+    "11": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "12": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH1",
+      "path": "2",
+      "value": "0x0"
+    },
+    "14": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "15": {
+      "dev": "Cannot send ether to nonpayable function",
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "REVERT",
+      "path": "2"
+    },
+    "16": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPDEST",
+      "path": "2"
+    },
+    "17": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "POP",
+      "path": "2"
+    },
+    "18": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH1",
+      "path": "2",
+      "value": "0x4"
+    },
+    "20": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "CALLDATASIZE",
+      "path": "2"
+    },
+    "21": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "LT",
+      "path": "2"
+    },
+    "22": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0x62"
+    },
+    "25": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "26": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH1",
+      "path": "2",
+      "value": "0x0"
+    },
+    "28": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "CALLDATALOAD",
+      "path": "2"
+    },
+    "29": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH1",
+      "path": "2",
+      "value": "0xE0"
+    },
+    "31": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "SHR",
+      "path": "2"
+    },
+    "32": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "33": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH4",
+      "path": "2",
+      "value": "0x743E92EE"
+    },
+    "38": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "EQ",
+      "path": "2"
+    },
+    "39": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0x67"
+    },
+    "42": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "43": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "44": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH4",
+      "path": "2",
+      "value": "0x893D20E8"
+    },
+    "49": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "EQ",
+      "path": "2"
+    },
+    "50": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0x90"
+    },
+    "53": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "54": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "55": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH4",
+      "path": "2",
+      "value": "0xA4C0ED36"
+    },
+    "60": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "EQ",
+      "path": "2"
+    },
+    "61": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0xA1"
+    },
+    "64": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "65": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "66": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH4",
+      "path": "2",
+      "value": "0xB49A9429"
+    },
+    "71": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "EQ",
+      "path": "2"
+    },
+    "72": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0xB6"
+    },
+    "75": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "76": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "77": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH4",
+      "path": "2",
+      "value": "0xF2FDE38B"
+    },
+    "82": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "EQ",
+      "path": "2"
+    },
+    "83": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0xC9"
+    },
+    "86": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "87": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "88": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH4",
+      "path": "2",
+      "value": "0xF4C066AF"
+    },
+    "93": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "EQ",
+      "path": "2"
+    },
+    "94": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH2",
+      "path": "2",
+      "value": "0xDC"
+    },
+    "97": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPI",
+      "path": "2"
+    },
+    "98": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "JUMPDEST",
+      "path": "2"
+    },
+    "99": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "PUSH1",
+      "path": "2",
+      "value": "0x0"
+    },
+    "101": {
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "DUP1",
+      "path": "2"
+    },
+    "102": {
+      "first_revert": true,
+      "fn": null,
+      "offset": [
+        245,
+        386
+      ],
+      "op": "REVERT",
+      "path": "2"
+    },
+    "103": {
+      "op": "JUMPDEST"
+    },
+    "104": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "106": {
+      "op": "SLOAD"
+    },
+    "107": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "109": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "111": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "113": {
+      "op": "SHL"
+    },
+    "114": {
+      "op": "SUB"
+    },
+    "115": {
+      "op": "AND"
+    },
+    "116": {
+      "op": "JUMPDEST"
+    },
+    "117": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "119": {
+      "op": "MLOAD"
+    },
+    "120": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "122": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "124": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "126": {
+      "op": "SHL"
+    },
+    "127": {
+      "op": "SUB"
+    },
+    "128": {
+      "op": "SWAP1"
+    },
+    "129": {
+      "op": "SWAP2"
+    },
+    "130": {
+      "op": "AND"
+    },
+    "131": {
+      "op": "DUP2"
+    },
+    "132": {
+      "op": "MSTORE"
+    },
+    "133": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "135": {
+      "op": "ADD"
+    },
+    "136": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "138": {
+      "op": "MLOAD"
+    },
+    "139": {
+      "op": "DUP1"
+    },
+    "140": {
+      "op": "SWAP2"
+    },
+    "141": {
+      "op": "SUB"
+    },
+    "142": {
+      "op": "SWAP1"
+    },
+    "143": {
+      "op": "RETURN"
+    },
+    "144": {
+      "op": "JUMPDEST"
+    },
+    "145": {
+      "op": "PUSH1",
+      "value": "0x2"
+    },
+    "147": {
+      "op": "SLOAD"
+    },
+    "148": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "150": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "152": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "154": {
+      "op": "SHL"
+    },
+    "155": {
+      "op": "SUB"
+    },
+    "156": {
+      "op": "AND"
+    },
+    "157": {
+      "op": "PUSH2",
+      "value": "0x74"
+    },
+    "160": {
+      "op": "JUMP"
+    },
+    "161": {
+      "op": "JUMPDEST"
+    },
+    "162": {
+      "op": "PUSH2",
+      "value": "0xB4"
+    },
+    "165": {
+      "op": "PUSH2",
+      "value": "0xAF"
+    },
+    "168": {
+      "op": "CALLDATASIZE"
+    },
+    "169": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "171": {
+      "op": "PUSH2",
+      "value": "0x3EF"
+    },
+    "174": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "175": {
+      "op": "JUMPDEST"
+    },
+    "176": {
+      "op": "PUSH2",
+      "value": "0xEF"
+    },
+    "179": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "180": {
+      "op": "JUMPDEST"
+    },
+    "181": {
+      "op": "STOP"
+    },
+    "182": {
+      "op": "JUMPDEST"
+    },
+    "183": {
+      "op": "PUSH2",
+      "value": "0xB4"
+    },
+    "186": {
+      "op": "PUSH2",
+      "value": "0xC4"
+    },
+    "189": {
+      "op": "CALLDATASIZE"
+    },
+    "190": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "192": {
+      "op": "PUSH2",
+      "value": "0x4BA"
+    },
+    "195": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "196": {
+      "op": "JUMPDEST"
+    },
+    "197": {
+      "op": "PUSH2",
+      "value": "0x137"
+    },
+    "200": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "201": {
+      "op": "JUMPDEST"
+    },
+    "202": {
+      "op": "PUSH2",
+      "value": "0xB4"
+    },
+    "205": {
+      "op": "PUSH2",
+      "value": "0xD7"
+    },
+    "208": {
+      "op": "CALLDATASIZE"
+    },
+    "209": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "211": {
+      "op": "PUSH2",
+      "value": "0x4D3"
+    },
+    "214": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "215": {
+      "op": "JUMPDEST"
+    },
+    "216": {
+      "op": "PUSH2",
+      "value": "0x25F"
+    },
+    "219": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "220": {
+      "op": "JUMPDEST"
+    },
+    "221": {
+      "op": "PUSH2",
+      "value": "0xB4"
+    },
+    "224": {
+      "op": "PUSH2",
+      "value": "0xEA"
+    },
+    "227": {
+      "op": "CALLDATASIZE"
+    },
+    "228": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "230": {
+      "op": "PUSH2",
+      "value": "0x4D3"
+    },
+    "233": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "234": {
+      "op": "JUMPDEST"
+    },
+    "235": {
+      "op": "PUSH2",
+      "value": "0x30F"
+    },
+    "238": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "239": {
+      "op": "JUMPDEST"
+    },
+    "240": {
+      "op": "DUP3"
+    },
+    "241": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "243": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "245": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "247": {
+      "op": "SHL"
+    },
+    "248": {
+      "op": "SUB"
+    },
+    "249": {
+      "op": "AND"
+    },
+    "250": {
+      "op": "PUSH32",
+      "value": "0x68673052F6FB5D6E65FFB26EDCD2394ED5509ACFEAF07FE99909055F10767DFC"
+    },
+    "283": {
+      "op": "DUP4"
+    },
+    "284": {
+      "op": "DUP4"
+    },
+    "285": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "287": {
+      "op": "MLOAD"
+    },
+    "288": {
+      "op": "PUSH2",
+      "value": "0x12A"
+    },
+    "291": {
+      "op": "SWAP3"
+    },
+    "292": {
+      "op": "SWAP2"
+    },
+    "293": {
+      "op": "SWAP1"
+    },
+    "294": {
+      "op": "PUSH2",
+      "value": "0x4F5"
+    },
+    "297": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "298": {
+      "op": "JUMPDEST"
+    },
+    "299": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "301": {
+      "op": "MLOAD"
+    },
+    "302": {
+      "op": "DUP1"
+    },
+    "303": {
+      "op": "SWAP2"
+    },
+    "304": {
+      "op": "SUB"
+    },
+    "305": {
+      "op": "SWAP1"
+    },
+    "306": {
+      "op": "LOG2"
+    },
+    "307": {
+      "op": "POP"
+    },
+    "308": {
+      "op": "POP"
+    },
+    "309": {
+      "op": "POP"
+    },
+    "310": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "311": {
+      "op": "JUMPDEST"
+    },
+    "312": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "314": {
+      "op": "SLOAD"
+    },
+    "315": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "317": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "319": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "321": {
+      "op": "SHL"
+    },
+    "322": {
+      "op": "SUB"
+    },
+    "323": {
+      "op": "AND"
+    },
+    "324": {
+      "op": "CALLER"
+    },
+    "325": {
+      "op": "EQ"
+    },
+    "326": {
+      "op": "PUSH2",
+      "value": "0x1A1"
+    },
+    "329": {
+      "op": "JUMPI"
+    },
+    "330": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "332": {
+      "op": "MLOAD"
+    },
+    "333": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "337": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "339": {
+      "op": "SHL"
+    },
+    "340": {
+      "op": "DUP2"
+    },
+    "341": {
+      "op": "MSTORE"
+    },
+    "342": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "344": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "346": {
+      "op": "DUP3"
+    },
+    "347": {
+      "op": "ADD"
+    },
+    "348": {
+      "op": "MSTORE"
+    },
+    "349": {
+      "op": "PUSH1",
+      "value": "0x22"
+    },
+    "351": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "353": {
+      "op": "DUP3"
+    },
+    "354": {
+      "op": "ADD"
+    },
+    "355": {
+      "op": "MSTORE"
+    },
+    "356": {
+      "op": "PUSH32",
+      "value": "0x4F6E6C79204B68726F6E204E6F64652063616E2066756C66696C6C20616C6572"
+    },
+    "389": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "391": {
+      "op": "DUP3"
+    },
+    "392": {
+      "op": "ADD"
+    },
+    "393": {
+      "op": "MSTORE"
+    },
+    "394": {
+      "op": "PUSH2",
+      "value": "0x7473"
+    },
+    "397": {
+      "op": "PUSH1",
+      "value": "0xF0"
+    },
+    "399": {
+      "op": "SHL"
+    },
+    "400": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "402": {
+      "op": "DUP3"
+    },
+    "403": {
+      "op": "ADD"
+    },
+    "404": {
+      "op": "MSTORE"
+    },
+    "405": {
+      "op": "PUSH1",
+      "value": "0x84"
+    },
+    "407": {
+      "op": "ADD"
+    },
+    "408": {
+      "op": "JUMPDEST"
+    },
+    "409": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "411": {
+      "op": "MLOAD"
+    },
+    "412": {
+      "op": "DUP1"
+    },
+    "413": {
+      "op": "SWAP2"
+    },
+    "414": {
+      "op": "SUB"
+    },
+    "415": {
+      "op": "SWAP1"
+    },
+    "416": {
+      "op": "REVERT"
+    },
+    "417": {
+      "op": "JUMPDEST"
+    },
+    "418": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "420": {
+      "op": "GAS"
+    },
+    "421": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "423": {
+      "op": "SLOAD"
+    },
+    "424": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "426": {
+      "op": "MLOAD"
+    },
+    "427": {
+      "op": "PUSH4",
+      "value": "0x2ED95A87"
+    },
+    "432": {
+      "op": "PUSH1",
+      "value": "0xE2"
+    },
+    "434": {
+      "op": "SHL"
+    },
+    "435": {
+      "op": "DUP2"
+    },
+    "436": {
+      "op": "MSTORE"
+    },
+    "437": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "439": {
+      "op": "DUP2"
+    },
+    "440": {
+      "op": "ADD"
+    },
+    "441": {
+      "op": "DUP6"
+    },
+    "442": {
+      "op": "SWAP1"
+    },
+    "443": {
+      "op": "MSTORE"
+    },
+    "444": {
+      "op": "SWAP2"
+    },
+    "445": {
+      "op": "SWAP3"
+    },
+    "446": {
+      "op": "POP"
+    },
+    "447": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "449": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "451": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "453": {
+      "op": "SHL"
+    },
+    "454": {
+      "op": "SUB"
+    },
+    "455": {
+      "op": "AND"
+    },
+    "456": {
+      "op": "SWAP1"
+    },
+    "457": {
+      "op": "PUSH4",
+      "value": "0xBB656A1C"
+    },
+    "462": {
+      "op": "SWAP1"
+    },
+    "463": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "465": {
+      "op": "ADD"
+    },
+    "466": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "468": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "470": {
+      "op": "MLOAD"
+    },
+    "471": {
+      "op": "DUP1"
+    },
+    "472": {
+      "op": "DUP4"
+    },
+    "473": {
+      "op": "SUB"
+    },
+    "474": {
+      "op": "DUP2"
+    },
+    "475": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "477": {
+      "op": "DUP8"
+    },
+    "478": {
+      "op": "GAS"
+    },
+    "479": {
+      "op": "CALL"
+    },
+    "480": {
+      "op": "ISZERO"
+    },
+    "481": {
+      "op": "DUP1"
+    },
+    "482": {
+      "op": "ISZERO"
+    },
+    "483": {
+      "op": "PUSH2",
+      "value": "0x1F0"
+    },
+    "486": {
+      "op": "JUMPI"
+    },
+    "487": {
+      "op": "RETURNDATASIZE"
+    },
+    "488": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "490": {
+      "op": "DUP1"
+    },
+    "491": {
+      "op": "RETURNDATACOPY"
+    },
+    "492": {
+      "op": "RETURNDATASIZE"
+    },
+    "493": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "495": {
+      "op": "REVERT"
+    },
+    "496": {
+      "op": "JUMPDEST"
+    },
+    "497": {
+      "op": "POP"
+    },
+    "498": {
+      "op": "POP"
+    },
+    "499": {
+      "op": "POP"
+    },
+    "500": {
+      "op": "POP"
+    },
+    "501": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "503": {
+      "op": "MLOAD"
+    },
+    "504": {
+      "op": "RETURNDATASIZE"
+    },
+    "505": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "507": {
+      "op": "NOT"
+    },
+    "508": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "510": {
+      "op": "DUP3"
+    },
+    "511": {
+      "op": "ADD"
+    },
+    "512": {
+      "op": "AND"
+    },
+    "513": {
+      "op": "DUP3"
+    },
+    "514": {
+      "op": "ADD"
+    },
+    "515": {
+      "op": "DUP1"
+    },
+    "516": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "518": {
+      "op": "MSTORE"
+    },
+    "519": {
+      "op": "POP"
+    },
+    "520": {
+      "op": "DUP2"
+    },
+    "521": {
+      "op": "ADD"
+    },
+    "522": {
+      "op": "SWAP1"
+    },
+    "523": {
+      "op": "PUSH2",
+      "value": "0x214"
+    },
+    "526": {
+      "op": "SWAP2"
+    },
+    "527": {
+      "op": "SWAP1"
+    },
+    "528": {
+      "op": "PUSH2",
+      "value": "0x552"
+    },
+    "531": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "532": {
+      "op": "JUMPDEST"
+    },
+    "533": {
+      "op": "POP"
+    },
+    "534": {
+      "op": "GAS"
+    },
+    "535": {
+      "op": "PUSH2",
+      "value": "0x220"
+    },
+    "538": {
+      "op": "SWAP1"
+    },
+    "539": {
+      "op": "DUP3"
+    },
+    "540": {
+      "op": "PUSH2",
+      "value": "0x574"
+    },
+    "543": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "544": {
+      "op": "JUMPDEST"
+    },
+    "545": {
+      "op": "SWAP1"
+    },
+    "546": {
+      "op": "POP"
+    },
+    "547": {
+      "op": "PUSH32",
+      "value": "0x7AC3A7FD27706D3839B4CCBDBBA62F9AC33D47DDCFE46B70E0477A9287B2BBF"
+    },
+    "580": {
+      "op": "DUP2"
+    },
+    "581": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "583": {
+      "op": "MLOAD"
+    },
+    "584": {
+      "op": "PUSH2",
+      "value": "0x253"
+    },
+    "587": {
+      "op": "SWAP2"
+    },
+    "588": {
+      "op": "DUP2"
+    },
+    "589": {
+      "op": "MSTORE"
+    },
+    "590": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "592": {
+      "op": "ADD"
+    },
+    "593": {
+      "op": "SWAP1"
+    },
+    "594": {
+      "op": "JUMP"
+    },
+    "595": {
+      "op": "JUMPDEST"
+    },
+    "596": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "598": {
+      "op": "MLOAD"
+    },
+    "599": {
+      "op": "DUP1"
+    },
+    "600": {
+      "op": "SWAP2"
+    },
+    "601": {
+      "op": "SUB"
+    },
+    "602": {
+      "op": "SWAP1"
+    },
+    "603": {
+      "op": "LOG1"
+    },
+    "604": {
+      "op": "POP"
+    },
+    "605": {
+      "op": "POP"
+    },
+    "606": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "607": {
+      "op": "JUMPDEST"
+    },
+    "608": {
+      "op": "PUSH1",
+      "value": "0x2"
+    },
+    "610": {
+      "op": "SLOAD"
+    },
+    "611": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "613": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "615": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "617": {
+      "op": "SHL"
+    },
+    "618": {
+      "op": "SUB"
+    },
+    "619": {
+      "op": "AND"
+    },
+    "620": {
+      "op": "CALLER"
+    },
+    "621": {
+      "op": "EQ"
+    },
+    "622": {
+      "op": "PUSH2",
+      "value": "0x2B9"
+    },
+    "625": {
+      "op": "JUMPI"
+    },
+    "626": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "628": {
+      "op": "MLOAD"
+    },
+    "629": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "633": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "635": {
+      "op": "SHL"
+    },
+    "636": {
+      "op": "DUP2"
+    },
+    "637": {
+      "op": "MSTORE"
+    },
+    "638": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "640": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "642": {
+      "op": "DUP3"
+    },
+    "643": {
+      "op": "ADD"
+    },
+    "644": {
+      "op": "MSTORE"
+    },
+    "645": {
+      "op": "PUSH1",
+      "value": "0x1C"
+    },
+    "647": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "649": {
+      "op": "DUP3"
+    },
+    "650": {
+      "op": "ADD"
+    },
+    "651": {
+      "op": "MSTORE"
+    },
+    "652": {
+      "op": "PUSH32",
+      "value": "0x4F6E6C79206F776E65722063616E20736574206E6577206F776E657200000000"
+    },
+    "685": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "687": {
+      "op": "DUP3"
+    },
+    "688": {
+      "op": "ADD"
+    },
+    "689": {
+      "op": "MSTORE"
+    },
+    "690": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "692": {
+      "op": "ADD"
+    },
+    "693": {
+      "op": "PUSH2",
+      "value": "0x198"
+    },
+    "696": {
+      "op": "JUMP"
+    },
+    "697": {
+      "op": "JUMPDEST"
+    },
+    "698": {
+      "op": "PUSH1",
+      "value": "0x2"
+    },
+    "700": {
+      "op": "DUP1"
+    },
+    "701": {
+      "op": "SLOAD"
+    },
+    "702": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "704": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "706": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "708": {
+      "op": "SHL"
+    },
+    "709": {
+      "op": "SUB"
+    },
+    "710": {
+      "op": "NOT"
+    },
+    "711": {
+      "op": "AND"
+    },
+    "712": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "714": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "716": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "718": {
+      "op": "SHL"
+    },
+    "719": {
+      "op": "SUB"
+    },
+    "720": {
+      "op": "DUP4"
+    },
+    "721": {
+      "op": "AND"
+    },
+    "722": {
+      "op": "SWAP1"
+    },
+    "723": {
+      "op": "DUP2"
+    },
+    "724": {
+      "op": "OR"
+    },
+    "725": {
+      "op": "SWAP1"
+    },
+    "726": {
+      "op": "SWAP2"
+    },
+    "727": {
+      "op": "SSTORE"
+    },
+    "728": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "730": {
+      "op": "MLOAD"
+    },
+    "731": {
+      "op": "TIMESTAMP"
+    },
+    "732": {
+      "op": "DUP2"
+    },
+    "733": {
+      "op": "MSTORE"
+    },
+    "734": {
+      "op": "CALLER"
+    },
+    "735": {
+      "op": "SWAP1"
+    },
+    "736": {
+      "op": "PUSH32",
+      "value": "0x2A77AB878BB8EC2E1FE5F644F1E082A981838214B97895416F35B164292423D"
+    },
+    "769": {
+      "op": "SWAP1"
+    },
+    "770": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "772": {
+      "op": "ADD"
+    },
+    "773": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "775": {
+      "op": "MLOAD"
+    },
+    "776": {
+      "op": "DUP1"
+    },
+    "777": {
+      "op": "SWAP2"
+    },
+    "778": {
+      "op": "SUB"
+    },
+    "779": {
+      "op": "SWAP1"
+    },
+    "780": {
+      "op": "LOG3"
+    },
+    "781": {
+      "op": "POP"
+    },
+    "782": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "783": {
+      "op": "JUMPDEST"
+    },
+    "784": {
+      "op": "PUSH1",
+      "value": "0x2"
+    },
+    "786": {
+      "op": "SLOAD"
+    },
+    "787": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "789": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "791": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "793": {
+      "op": "SHL"
+    },
+    "794": {
+      "op": "SUB"
+    },
+    "795": {
+      "op": "AND"
+    },
+    "796": {
+      "op": "CALLER"
+    },
+    "797": {
+      "op": "EQ"
+    },
+    "798": {
+      "op": "PUSH2",
+      "value": "0x369"
+    },
+    "801": {
+      "op": "JUMPI"
+    },
+    "802": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "804": {
+      "op": "MLOAD"
+    },
+    "805": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "809": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "811": {
+      "op": "SHL"
+    },
+    "812": {
+      "op": "DUP2"
+    },
+    "813": {
+      "op": "MSTORE"
+    },
+    "814": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "816": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "818": {
+      "op": "DUP3"
+    },
+    "819": {
+      "op": "ADD"
+    },
+    "820": {
+      "op": "MSTORE"
+    },
+    "821": {
+      "op": "PUSH1",
+      "value": "0x17"
+    },
+    "823": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "825": {
+      "op": "DUP3"
+    },
+    "826": {
+      "op": "ADD"
+    },
+    "827": {
+      "op": "MSTORE"
+    },
+    "828": {
+      "op": "PUSH32",
+      "value": "0x4F6E6C79206F776E65722063616E20736574204E6F6465000000000000000000"
+    },
+    "861": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "863": {
+      "op": "DUP3"
+    },
+    "864": {
+      "op": "ADD"
+    },
+    "865": {
+      "op": "MSTORE"
+    },
+    "866": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "868": {
+      "op": "ADD"
+    },
+    "869": {
+      "op": "PUSH2",
+      "value": "0x198"
+    },
+    "872": {
+      "op": "JUMP"
+    },
+    "873": {
+      "op": "JUMPDEST"
+    },
+    "874": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "876": {
+      "op": "DUP1"
+    },
+    "877": {
+      "op": "SLOAD"
+    },
+    "878": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "880": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "882": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "884": {
+      "op": "SHL"
+    },
+    "885": {
+      "op": "SUB"
+    },
+    "886": {
+      "op": "NOT"
+    },
+    "887": {
+      "op": "AND"
+    },
+    "888": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "890": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "892": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "894": {
+      "op": "SHL"
+    },
+    "895": {
+      "op": "SUB"
+    },
+    "896": {
+      "op": "DUP4"
+    },
+    "897": {
+      "op": "AND"
+    },
+    "898": {
+      "op": "SWAP1"
+    },
+    "899": {
+      "op": "DUP2"
+    },
+    "900": {
+      "op": "OR"
+    },
+    "901": {
+      "op": "SWAP1"
+    },
+    "902": {
+      "op": "SWAP2"
+    },
+    "903": {
+      "op": "SSTORE"
+    },
+    "904": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "906": {
+      "op": "MLOAD"
+    },
+    "907": {
+      "op": "TIMESTAMP"
+    },
+    "908": {
+      "op": "DUP2"
+    },
+    "909": {
+      "op": "MSTORE"
+    },
+    "910": {
+      "op": "PUSH32",
+      "value": "0xC25B8FAA6EAF43FC8784F55DABC7E50B75D3DCB3AB32F163D347633E0B1185AC"
+    },
+    "943": {
+      "op": "SWAP1"
+    },
+    "944": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "946": {
+      "op": "ADD"
+    },
+    "947": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "949": {
+      "op": "MLOAD"
+    },
+    "950": {
+      "op": "DUP1"
+    },
+    "951": {
+      "op": "SWAP2"
+    },
+    "952": {
+      "op": "SUB"
+    },
+    "953": {
+      "op": "SWAP1"
+    },
+    "954": {
+      "op": "LOG2"
+    },
+    "955": {
+      "op": "POP"
+    },
+    "956": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "957": {
+      "op": "JUMPDEST"
+    },
+    "958": {
+      "op": "DUP1"
+    },
+    "959": {
+      "op": "CALLDATALOAD"
+    },
+    "960": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "962": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "964": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "966": {
+      "op": "SHL"
+    },
+    "967": {
+      "op": "SUB"
+    },
+    "968": {
+      "op": "DUP2"
+    },
+    "969": {
+      "op": "AND"
+    },
+    "970": {
+      "op": "DUP2"
+    },
+    "971": {
+      "op": "EQ"
+    },
+    "972": {
+      "op": "PUSH2",
+      "value": "0x3D4"
+    },
+    "975": {
+      "op": "JUMPI"
+    },
+    "976": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "978": {
+      "op": "DUP1"
+    },
+    "979": {
+      "op": "REVERT"
+    },
+    "980": {
+      "op": "JUMPDEST"
+    },
+    "981": {
+      "op": "SWAP2"
+    },
+    "982": {
+      "op": "SWAP1"
+    },
+    "983": {
+      "op": "POP"
+    },
+    "984": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "985": {
+      "op": "JUMPDEST"
+    },
+    "986": {
+      "op": "PUSH4",
+      "value": "0x4E487B71"
+    },
+    "991": {
+      "op": "PUSH1",
+      "value": "0xE0"
+    },
+    "993": {
+      "op": "SHL"
+    },
+    "994": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "996": {
+      "op": "MSTORE"
+    },
+    "997": {
+      "op": "PUSH1",
+      "value": "0x41"
+    },
+    "999": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "1001": {
+      "op": "MSTORE"
+    },
+    "1002": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "1004": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1006": {
+      "op": "REVERT"
+    },
+    "1007": {
+      "op": "JUMPDEST"
+    },
+    "1008": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1010": {
+      "op": "DUP1"
+    },
+    "1011": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1013": {
+      "op": "PUSH1",
+      "value": "0x60"
+    },
+    "1015": {
+      "op": "DUP5"
+    },
+    "1016": {
+      "op": "DUP7"
+    },
+    "1017": {
+      "op": "SUB"
+    },
+    "1018": {
+      "op": "SLT"
+    },
+    "1019": {
+      "op": "ISZERO"
+    },
+    "1020": {
+      "op": "PUSH2",
+      "value": "0x404"
+    },
+    "1023": {
+      "op": "JUMPI"
+    },
+    "1024": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1026": {
+      "op": "DUP1"
+    },
+    "1027": {
+      "op": "REVERT"
+    },
+    "1028": {
+      "op": "JUMPDEST"
+    },
+    "1029": {
+      "op": "PUSH2",
+      "value": "0x40D"
+    },
+    "1032": {
+      "op": "DUP5"
+    },
+    "1033": {
+      "op": "PUSH2",
+      "value": "0x3BD"
+    },
+    "1036": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "1037": {
+      "op": "JUMPDEST"
+    },
+    "1038": {
+      "op": "SWAP3"
+    },
+    "1039": {
+      "op": "POP"
+    },
+    "1040": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1042": {
+      "op": "DUP5"
+    },
+    "1043": {
+      "op": "ADD"
+    },
+    "1044": {
+      "op": "CALLDATALOAD"
+    },
+    "1045": {
+      "op": "SWAP2"
+    },
+    "1046": {
+      "op": "POP"
+    },
+    "1047": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "1049": {
+      "op": "DUP5"
+    },
+    "1050": {
+      "op": "ADD"
+    },
+    "1051": {
+      "op": "CALLDATALOAD"
+    },
+    "1052": {
+      "op": "PUSH8",
+      "value": "0xFFFFFFFFFFFFFFFF"
+    },
+    "1061": {
+      "op": "DUP1"
+    },
+    "1062": {
+      "op": "DUP3"
+    },
+    "1063": {
+      "op": "GT"
+    },
+    "1064": {
+      "op": "ISZERO"
+    },
+    "1065": {
+      "op": "PUSH2",
+      "value": "0x431"
+    },
+    "1068": {
+      "op": "JUMPI"
+    },
+    "1069": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1071": {
+      "op": "DUP1"
+    },
+    "1072": {
+      "op": "REVERT"
+    },
+    "1073": {
+      "op": "JUMPDEST"
+    },
+    "1074": {
+      "op": "DUP2"
+    },
+    "1075": {
+      "op": "DUP7"
+    },
+    "1076": {
+      "op": "ADD"
+    },
+    "1077": {
+      "op": "SWAP2"
+    },
+    "1078": {
+      "op": "POP"
+    },
+    "1079": {
+      "op": "DUP7"
+    },
+    "1080": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "1082": {
+      "op": "DUP4"
+    },
+    "1083": {
+      "op": "ADD"
+    },
+    "1084": {
+      "op": "SLT"
+    },
+    "1085": {
+      "op": "PUSH2",
+      "value": "0x445"
+    },
+    "1088": {
+      "op": "JUMPI"
+    },
+    "1089": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1091": {
+      "op": "DUP1"
+    },
+    "1092": {
+      "op": "REVERT"
+    },
+    "1093": {
+      "op": "JUMPDEST"
+    },
+    "1094": {
+      "op": "DUP2"
+    },
+    "1095": {
+      "op": "CALLDATALOAD"
+    },
+    "1096": {
+      "op": "DUP2"
+    },
+    "1097": {
+      "op": "DUP2"
+    },
+    "1098": {
+      "op": "GT"
+    },
+    "1099": {
+      "op": "ISZERO"
+    },
+    "1100": {
+      "op": "PUSH2",
+      "value": "0x457"
+    },
+    "1103": {
+      "op": "JUMPI"
+    },
+    "1104": {
+      "op": "PUSH2",
+      "value": "0x457"
+    },
+    "1107": {
+      "op": "PUSH2",
+      "value": "0x3D9"
+    },
+    "1110": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "1111": {
+      "op": "JUMPDEST"
+    },
+    "1112": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "1114": {
+      "op": "MLOAD"
+    },
+    "1115": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "1117": {
+      "op": "DUP3"
+    },
+    "1118": {
+      "op": "ADD"
+    },
+    "1119": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "1121": {
+      "op": "NOT"
+    },
+    "1122": {
+      "op": "SWAP1"
+    },
+    "1123": {
+      "op": "DUP2"
+    },
+    "1124": {
+      "op": "AND"
+    },
+    "1125": {
+      "op": "PUSH1",
+      "value": "0x3F"
+    },
+    "1127": {
+      "op": "ADD"
+    },
+    "1128": {
+      "op": "AND"
+    },
+    "1129": {
+      "op": "DUP2"
+    },
+    "1130": {
+      "op": "ADD"
+    },
+    "1131": {
+      "op": "SWAP1"
+    },
+    "1132": {
+      "op": "DUP4"
+    },
+    "1133": {
+      "op": "DUP3"
+    },
+    "1134": {
+      "op": "GT"
+    },
+    "1135": {
+      "op": "DUP2"
+    },
+    "1136": {
+      "op": "DUP4"
+    },
+    "1137": {
+      "op": "LT"
+    },
+    "1138": {
+      "op": "OR"
+    },
+    "1139": {
+      "op": "ISZERO"
+    },
+    "1140": {
+      "op": "PUSH2",
+      "value": "0x47F"
+    },
+    "1143": {
+      "op": "JUMPI"
+    },
+    "1144": {
+      "op": "PUSH2",
+      "value": "0x47F"
+    },
+    "1147": {
+      "op": "PUSH2",
+      "value": "0x3D9"
+    },
+    "1150": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "1151": {
+      "op": "JUMPDEST"
+    },
+    "1152": {
+      "op": "DUP2"
+    },
+    "1153": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "1155": {
+      "op": "MSTORE"
+    },
+    "1156": {
+      "op": "DUP3"
+    },
+    "1157": {
+      "op": "DUP2"
+    },
+    "1158": {
+      "op": "MSTORE"
+    },
+    "1159": {
+      "op": "DUP10"
+    },
+    "1160": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1162": {
+      "op": "DUP5"
+    },
+    "1163": {
+      "op": "DUP8"
+    },
+    "1164": {
+      "op": "ADD"
+    },
+    "1165": {
+      "op": "ADD"
+    },
+    "1166": {
+      "op": "GT"
+    },
+    "1167": {
+      "op": "ISZERO"
+    },
+    "1168": {
+      "op": "PUSH2",
+      "value": "0x498"
+    },
+    "1171": {
+      "op": "JUMPI"
+    },
+    "1172": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1174": {
+      "op": "DUP1"
+    },
+    "1175": {
+      "op": "REVERT"
+    },
+    "1176": {
+      "op": "JUMPDEST"
+    },
+    "1177": {
+      "op": "DUP3"
+    },
+    "1178": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1180": {
+      "op": "DUP7"
+    },
+    "1181": {
+      "op": "ADD"
+    },
+    "1182": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1184": {
+      "op": "DUP4"
+    },
+    "1185": {
+      "op": "ADD"
+    },
+    "1186": {
+      "op": "CALLDATACOPY"
+    },
+    "1187": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1189": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1191": {
+      "op": "DUP5"
+    },
+    "1192": {
+      "op": "DUP4"
+    },
+    "1193": {
+      "op": "ADD"
+    },
+    "1194": {
+      "op": "ADD"
+    },
+    "1195": {
+      "op": "MSTORE"
+    },
+    "1196": {
+      "op": "DUP1"
+    },
+    "1197": {
+      "op": "SWAP6"
+    },
+    "1198": {
+      "op": "POP"
+    },
+    "1199": {
+      "op": "POP"
+    },
+    "1200": {
+      "op": "POP"
+    },
+    "1201": {
+      "op": "POP"
+    },
+    "1202": {
+      "op": "POP"
+    },
+    "1203": {
+      "op": "POP"
+    },
+    "1204": {
+      "op": "SWAP3"
+    },
+    "1205": {
+      "op": "POP"
+    },
+    "1206": {
+      "op": "SWAP3"
+    },
+    "1207": {
+      "op": "POP"
+    },
+    "1208": {
+      "op": "SWAP3"
+    },
+    "1209": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "1210": {
+      "op": "JUMPDEST"
+    },
+    "1211": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1213": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1215": {
+      "op": "DUP3"
+    },
+    "1216": {
+      "op": "DUP5"
+    },
+    "1217": {
+      "op": "SUB"
+    },
+    "1218": {
+      "op": "SLT"
+    },
+    "1219": {
+      "op": "ISZERO"
+    },
+    "1220": {
+      "op": "PUSH2",
+      "value": "0x4CC"
+    },
+    "1223": {
+      "op": "JUMPI"
+    },
+    "1224": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1226": {
+      "op": "DUP1"
+    },
+    "1227": {
+      "op": "REVERT"
+    },
+    "1228": {
+      "op": "JUMPDEST"
+    },
+    "1229": {
+      "op": "POP"
+    },
+    "1230": {
+      "op": "CALLDATALOAD"
+    },
+    "1231": {
+      "op": "SWAP2"
+    },
+    "1232": {
+      "op": "SWAP1"
+    },
+    "1233": {
+      "op": "POP"
+    },
+    "1234": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "1235": {
+      "op": "JUMPDEST"
+    },
+    "1236": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1238": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1240": {
+      "op": "DUP3"
+    },
+    "1241": {
+      "op": "DUP5"
+    },
+    "1242": {
+      "op": "SUB"
+    },
+    "1243": {
+      "op": "SLT"
+    },
+    "1244": {
+      "op": "ISZERO"
+    },
+    "1245": {
+      "op": "PUSH2",
+      "value": "0x4E5"
+    },
+    "1248": {
+      "op": "JUMPI"
+    },
+    "1249": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1251": {
+      "op": "DUP1"
+    },
+    "1252": {
+      "op": "REVERT"
+    },
+    "1253": {
+      "op": "JUMPDEST"
+    },
+    "1254": {
+      "op": "PUSH2",
+      "value": "0x4EE"
+    },
+    "1257": {
+      "op": "DUP3"
+    },
+    "1258": {
+      "op": "PUSH2",
+      "value": "0x3BD"
+    },
+    "1261": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "1262": {
+      "op": "JUMPDEST"
+    },
+    "1263": {
+      "op": "SWAP4"
+    },
+    "1264": {
+      "op": "SWAP3"
+    },
+    "1265": {
+      "op": "POP"
+    },
+    "1266": {
+      "op": "POP"
+    },
+    "1267": {
+      "op": "POP"
+    },
+    "1268": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "1269": {
+      "op": "JUMPDEST"
+    },
+    "1270": {
+      "op": "DUP3"
+    },
+    "1271": {
+      "op": "DUP2"
+    },
+    "1272": {
+      "op": "MSTORE"
+    },
+    "1273": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1275": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1277": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "1279": {
+      "op": "DUP2"
+    },
+    "1280": {
+      "op": "DUP5"
+    },
+    "1281": {
+      "op": "ADD"
+    },
+    "1282": {
+      "op": "MSTORE"
+    },
+    "1283": {
+      "op": "DUP4"
+    },
+    "1284": {
+      "op": "MLOAD"
+    },
+    "1285": {
+      "op": "DUP1"
+    },
+    "1286": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "1288": {
+      "op": "DUP6"
+    },
+    "1289": {
+      "op": "ADD"
+    },
+    "1290": {
+      "op": "MSTORE"
+    },
+    "1291": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1293": {
+      "op": "JUMPDEST"
+    },
+    "1294": {
+      "op": "DUP2"
+    },
+    "1295": {
+      "op": "DUP2"
+    },
+    "1296": {
+      "op": "LT"
+    },
+    "1297": {
+      "op": "ISZERO"
+    },
+    "1298": {
+      "op": "PUSH2",
+      "value": "0x529"
+    },
+    "1301": {
+      "op": "JUMPI"
+    },
+    "1302": {
+      "op": "DUP6"
+    },
+    "1303": {
+      "op": "DUP2"
+    },
+    "1304": {
+      "op": "ADD"
+    },
+    "1305": {
+      "op": "DUP4"
+    },
+    "1306": {
+      "op": "ADD"
+    },
+    "1307": {
+      "op": "MLOAD"
+    },
+    "1308": {
+      "op": "DUP6"
+    },
+    "1309": {
+      "op": "DUP3"
+    },
+    "1310": {
+      "op": "ADD"
+    },
+    "1311": {
+      "op": "PUSH1",
+      "value": "0x60"
+    },
+    "1313": {
+      "op": "ADD"
+    },
+    "1314": {
+      "op": "MSTORE"
+    },
+    "1315": {
+      "op": "DUP3"
+    },
+    "1316": {
+      "op": "ADD"
+    },
+    "1317": {
+      "op": "PUSH2",
+      "value": "0x50D"
+    },
+    "1320": {
+      "op": "JUMP"
+    },
+    "1321": {
+      "op": "JUMPDEST"
+    },
+    "1322": {
+      "op": "DUP2"
+    },
+    "1323": {
+      "op": "DUP2"
+    },
+    "1324": {
+      "op": "GT"
+    },
+    "1325": {
+      "op": "ISZERO"
+    },
+    "1326": {
+      "op": "PUSH2",
+      "value": "0x53B"
+    },
+    "1329": {
+      "op": "JUMPI"
+    },
+    "1330": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1332": {
+      "op": "PUSH1",
+      "value": "0x60"
+    },
+    "1334": {
+      "op": "DUP4"
+    },
+    "1335": {
+      "op": "DUP8"
+    },
+    "1336": {
+      "op": "ADD"
+    },
+    "1337": {
+      "op": "ADD"
+    },
+    "1338": {
+      "op": "MSTORE"
+    },
+    "1339": {
+      "op": "JUMPDEST"
+    },
+    "1340": {
+      "op": "POP"
+    },
+    "1341": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "1343": {
+      "op": "ADD"
+    },
+    "1344": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "1346": {
+      "op": "NOT"
+    },
+    "1347": {
+      "op": "AND"
+    },
+    "1348": {
+      "op": "SWAP3"
+    },
+    "1349": {
+      "op": "SWAP1"
+    },
+    "1350": {
+      "op": "SWAP3"
+    },
+    "1351": {
+      "op": "ADD"
+    },
+    "1352": {
+      "op": "PUSH1",
+      "value": "0x60"
+    },
+    "1354": {
+      "op": "ADD"
+    },
+    "1355": {
+      "op": "SWAP5"
+    },
+    "1356": {
+      "op": "SWAP4"
+    },
+    "1357": {
+      "op": "POP"
+    },
+    "1358": {
+      "op": "POP"
+    },
+    "1359": {
+      "op": "POP"
+    },
+    "1360": {
+      "op": "POP"
+    },
+    "1361": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "1362": {
+      "op": "JUMPDEST"
+    },
+    "1363": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1365": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1367": {
+      "op": "DUP3"
+    },
+    "1368": {
+      "op": "DUP5"
+    },
+    "1369": {
+      "op": "SUB"
+    },
+    "1370": {
+      "op": "SLT"
+    },
+    "1371": {
+      "op": "ISZERO"
+    },
+    "1372": {
+      "op": "PUSH2",
+      "value": "0x564"
+    },
+    "1375": {
+      "op": "JUMPI"
+    },
+    "1376": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1378": {
+      "op": "DUP1"
+    },
+    "1379": {
+      "op": "REVERT"
+    },
+    "1380": {
+      "op": "JUMPDEST"
+    },
+    "1381": {
+      "op": "DUP2"
+    },
+    "1382": {
+      "op": "MLOAD"
+    },
+    "1383": {
+      "op": "DUP1"
+    },
+    "1384": {
+      "op": "ISZERO"
+    },
+    "1385": {
+      "op": "ISZERO"
+    },
+    "1386": {
+      "op": "DUP2"
+    },
+    "1387": {
+      "op": "EQ"
+    },
+    "1388": {
+      "op": "PUSH2",
+      "value": "0x4EE"
+    },
+    "1391": {
+      "op": "JUMPI"
+    },
+    "1392": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1394": {
+      "op": "DUP1"
+    },
+    "1395": {
+      "op": "REVERT"
+    },
+    "1396": {
+      "op": "JUMPDEST"
+    },
+    "1397": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1399": {
+      "op": "DUP3"
+    },
+    "1400": {
+      "op": "DUP3"
+    },
+    "1401": {
+      "op": "LT"
+    },
+    "1402": {
+      "op": "ISZERO"
+    },
+    "1403": {
+      "op": "PUSH2",
+      "value": "0x594"
+    },
+    "1406": {
+      "op": "JUMPI"
+    },
+    "1407": {
+      "op": "PUSH4",
+      "value": "0x4E487B71"
+    },
+    "1412": {
+      "op": "PUSH1",
+      "value": "0xE0"
+    },
+    "1414": {
+      "op": "SHL"
+    },
+    "1415": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1417": {
+      "op": "MSTORE"
+    },
+    "1418": {
+      "op": "PUSH1",
+      "value": "0x11"
+    },
+    "1420": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "1422": {
+      "op": "MSTORE"
+    },
+    "1423": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "1425": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1427": {
+      "op": "REVERT"
+    },
+    "1428": {
+      "op": "JUMPDEST"
+    },
+    "1429": {
+      "op": "POP"
+    },
+    "1430": {
+      "op": "SUB"
+    },
+    "1431": {
+      "op": "SWAP1"
+    },
+    "1432": {
+      "jump": "o",
+      "op": "JUMP"
+    }
+  },
+  "sha1": "a40f2929966a2b4f76ce3b953833487be4924b6d",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n//Local Import from package source\n//import \"Khronus_Utils/contracts/KhronusNodeBase.sol\";\n//Remote import from repo\nimport \"@khronus/khronus-utils@0.0.2/contracts/KhronusNodeBase.sol\";\n\n\ncontract TestKhronusNode is KhronusNode {\n    constructor (address _khronus_Coordinator) KhronusNode(_khronus_Coordinator) {\n        \n    }\n}",
+  "sourceMap": "245:141:2:-:0;;;291:93;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;681:18:0;:69;;-1:-1:-1;;;;;681:69:0;;;-1:-1:-1;;;;;;681:69:0;;;;;;760:5;:18;;;;;768:10;760:18;;;245:141:2;;14:290:3;84:6;137:2;125:9;116:7;112:23;108:32;105:52;;;153:1;150;143:12;105:52;179:16;;-1:-1:-1;;;;;224:31:3;;214:42;;204:70;;270:1;267;260:12;204:70;293:5;14:290;-1:-1:-1;;;14:290:3:o;:::-;245:141:2;;;;;;",
+  "sourcePath": "contracts/node_test.sol",
+  "type": "contract"
+}
