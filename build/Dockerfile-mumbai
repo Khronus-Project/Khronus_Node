@@ -1,0 +1,13 @@
+FROM python:3.9
+
+WORKDIR /Khronus_node
+
+COPY requirements.txt .
+COPY dependencies ./dependencies
+COPY build/.env .
+COPY khron_node ./khron_node
+
+RUN pip install -r requirements.txt
+
+RUN python khron_node/initialize_node.py
+CMD python khron_node/node_operator.py mumbai

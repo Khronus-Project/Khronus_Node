@@ -44,6 +44,14 @@ def initialize_configs(network):
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
         set_POA_middleware()
         print(f'connected {network}')
+    elif network == "mumbai":
+        config_node_provider = environ['NODE_PROVIDER_MUMBAI']
+        config_abiPath = environ["ABI_PATH_DEPLOYED"]
+        config_nodeContractAddress = environ["ADDRESS_MUMBAI"]
+        config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
+        web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
+        set_POA_middleware()
+        print(f'connected {network}')
     else:
         print("Unsoported Network")
 
