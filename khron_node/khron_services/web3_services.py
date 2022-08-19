@@ -28,6 +28,14 @@ def initialize_configs(network):
         web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
         set_POA_middleware()
         print(f'connected {network}')
+    elif network == "bsc_test_classic":
+        config_node_provider = environ['NODE_PROVIDER_BSC_OFFICIAL']
+        config_abiPath = environ["ABI_PATH_DEPLOYED"]
+        config_nodeContractAddress = environ["ADDRESS_BSC_CLASSIC"]
+        config_nodePrivateKey = environ["PRIVATE_KEY_DEPLOYED"]
+        web3_connection = Web3(Web3.HTTPProvider(config_node_provider))
+        set_POA_middleware()
+        print(f'connected {network}')
     elif network == "bsc_test":
         config_node_provider = environ['NODE_PROVIDER_BSC_OFFICIAL']
         config_abiPath = environ["ABI_PATH_DEPLOYED"]
@@ -71,18 +79,20 @@ def get_event_filter(contract):
     return contract.events.RequestReceived.createFilter(fromBlock='latest')
 
 def fulfill_alert(contract, alertID):
-    estimated_gas = contract.functions.fulfillAlert(alertID).estimateGas()
+    estimated_gas = contract.functions.fulfillAlert(alertID).estimateGas({"from":get_public_key()}) + 100000
+    print("fulfilling alert",contract.address, get_public_key(), estimated_gas)
     if estimated_gas <= 450000:
         transaction_body = {
             "nonce":web3_connection.eth.get_transaction_count(get_public_key()),
             "gas":estimated_gas
         }
         function_call = contract.functions.fulfillAlert(alertID).buildTransaction(transaction_body)
-        print(f'Estimated gas to fulfill alert {contract.functions.fulfillAlert(alertID).estimateGas()}')
+        print(f'Estimated gas to fulfill alert {estimated_gas}')
         signed_transaction = web3_connection.eth.account.sign_transaction(function_call, config_nodePrivateKey)
         fulfill_tx = web3_connection.eth.send_raw_transaction(signed_transaction.rawTransaction)
         result = fulfill_tx
         web3_connection.eth.wait_for_transaction_receipt(fulfill_tx)
+
     else:
         result = {"Exception":"0001", "Description":"f'alertID {alertID} exceeds the allowed gas limit of 450000 units"}
     return result
