@@ -5,7 +5,10 @@
 This is the validator necessary to run the validator test in the local network. 
 - Clone the repository
 - Make sure that the contracts are deployed in the local network. 
-- Create a .env file with the data required in the .env-template file. (Deployed contracts and rpc nodes are needed).
+- Create a .env file with the data required in the .env-template file. (Deployed contracts, private key and rpc nodes are needed).
+    - Deployed address of your locally deployed Khronus Node contract
+    - Private to be used by the node
+    - local rpc network link
 - From the main directory where the project was cloned:
     - Create a virtual environment with python 3
     - switch to the virtual environment 
